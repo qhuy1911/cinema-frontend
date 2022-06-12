@@ -1,0 +1,11 @@
+.admin-navbar-wrapper {
+  width: 350px;
+  height: 100vh;
+  background-color: aqua;
+}
+
+.admin-navbar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

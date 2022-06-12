@@ -1,6 +1,6 @@
 import { AdminLayout } from "../components/Layouts";
-import Home from "../pages/Home";
-import MoviesList from "../pages/MoviesList";
+import Home from "../pages/User/Home";
+import MoviesList from "../pages/Admin/MoviesList";
 
 const publicRoutes = [
   { path: "/", component: Home },

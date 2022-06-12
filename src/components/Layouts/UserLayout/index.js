@@ -1,10 +1,13 @@
 import Navbar from "../../Navbar";
+import "./UserLayout.css";
 
 function UserLayout({ children }) {
   return (
-    <div>
+    <div className="user-layout-wrapper">
       <Navbar />
-      <div className="containter">{children}</div>
+      <div className="user-layout-container">
+        <div className="user-layout-content">{children}</div>
+      </div>
     </div>
   );
 }

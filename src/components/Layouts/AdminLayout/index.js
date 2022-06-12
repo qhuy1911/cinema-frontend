@@ -1,10 +1,11 @@
 import AdminNavbar from "../../AdminNavbar";
+import "./AdminLayout.css";
 
 function AdminLayout({ children }) {
   return (
-    <div>
+    <div className="admin-layout-wrapper">
       <AdminNavbar />
-      <div className="container">{children}</div>
+      <div className="admin-layout-content">{children}</div>
     </div>
   );
 }
