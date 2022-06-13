@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
 :root {
   --navbar-height: 68px;
   --navbar-width: 1140px;
@@ -21,6 +23,7 @@ body {
 
 body {
   line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
 }
 
 img,
