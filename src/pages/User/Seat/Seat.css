@@ -1,0 +1,267 @@
+/* . {
+    background-color: #F9FBFD;
+} */
+
+/*-------Set-------*/
+.Seat {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.Seat .Seat-contai {
+    width: 70%;
+}
+
+.Seat .Seat-infor {
+    width: 30%;
+}
+
+/*--------cinema-----------*/
+.cinema {
+    margin-bottom: 18px;
+    perspective: 400px;
+    display: grid;
+    place-items: center;
+    grid-gap: 24px;
+}
+
+/*----cinemaa-screen----*/
+.cinema .cinema-screen {
+
+    height: 32px;
+    background: white;
+    width: 80%;
+    /* transform: rotateX(-19deg) scale(1.1); */
+    box-shadow: 0 0px 5px 1px #d6d6d6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: -webkit-right; */
+    /* margin: 0 auto; */
+    color: #919090;
+    word-spacing: 4.4px;
+    letter-spacing: 2.3px;
+
+
+}
+
+/*---cinema-leter-----*/
+.cinema {
+    position: relative;
+    margin-top: 20px;
+}
+
+.cinema .cinema-leter {
+    position: absolute;
+    height: 63px;
+    top: 16.5%;
+    left: 3%;
+    height: 100%;
+}
+
+.cinema .cinema-leter p {
+    height: 30px;
+    width: 30px;
+    color: white;
+    background: #647182;
+    margin-bottom: 7px;
+    border-radius: 3px;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 5px;
+
+
+}
+
+/*------cinema-seat-----*/
+.cinema .cinema-seats {
+    display: grid;
+    grid-gap: 7px;
+    grid-template-columns: repeat(16, min-content);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+
+}
+
+.cinema .cinema-seats .seat:nth-of-type(8n + 2) {
+    margin-right: 12px;
+}
+
+.cinema .cinema-seats .seat:nth-of-type(8n + 6) {
+    margin-right: 12px;
+}
+
+.cinema .cinema-seats .seat {
+    display: inline-block;
+    background: #DFDFDF;
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    top: 1px;
+}
+
+.cinema .cinema-seats .seat:not(.occupied):hover,
+.cinema .cinema-seats .seat:not(.occupied):focus {
+    cursor: pointer;
+    background: #c1eac5;
+    transform: scale(1.2);
+}
+
+.cinema .cinema-seats .seat.selected::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    background: transparent;
+    border: 1px solid #7bc47f;
+    animation: show-off 0.8s;
+    visibility: hidden;
+}
+
+@keyframes show-off {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+.seat.selected {
+    background: #7bc47f !important;
+}
+
+/* .seat.occupied {
+    background: #cfcfcf;
+} */
+/*----------show case---------*/
+.showcase {
+
+    padding: 0;
+    list-style: none;
+    padding: 12px;
+    border-radius: 4px;
+    color: #7e7e7e;
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.showcase li {
+    margin: 0 12px;
+}
+
+.div {
+    height: 30px;
+    width: 30px;
+    margin: 0 12px;
+    background-color: #DFDFDF;
+    border-radius: 3px;
+}
+
+
+.showcase .showcase-empty {
+    display: flex;
+    align-items: center;
+}
+
+.showcase .showcase-selected {
+
+    display: flex;
+    align-items: center;
+
+}
+
+.showcase .showcase-selected .div {
+    height: 30px;
+    width: 30px;
+    margin: 0 12px;
+    background-color: #7BC47F;
+    border-radius: 3px;
+}
+
+.showcase .showcase-occupied {
+
+    display: flex;
+    align-items: center;
+
+}
+
+.showcase .showcase-occupied .div {
+    height: 30px;
+    width: 30px;
+    margin: 0 12px;
+    background-color: #ba3131;
+    border-radius: 3px;
+}
+
+/*----infor------*/
+.Seat-infor .Seat-infor-top {
+    border: 1px solid #ebebeb;
+    border-radius: 10px;
+    background: white;
+    color: #181818;
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-weight: 350px;
+    letter-spacing: 0.8px;
+}
+
+.Seat-infor .Seat-infor-top .Seat-infor-top-nametheater {
+    font-weight: 500;
+}
+
+.Seat-infor .Seat-infor-top .Seat-infor-top-total {
+    margin-right: 10px;
+}
+
+.Seat-infor .Seat-infor-top .count {
+    font-weight: 500;
+}
+
+.Seat-infor .Seat-infor-midle {
+    border: 1px solid #ebebeb;
+    border-radius: 10px;
+    background: white;
+    color: #181818;
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-weight: 350px;
+    letter-spacing: 0.8px;
+}
+
+.Seat-infor .Seat-infor-midle .Seat-infor-midle-price {
+    margin-right: 10px;
+}
+
+.Seat-infor .Seat-infor-midle .infor-item-total {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.Seat-infor .Seat-infor-bottom-button {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 9px;
+    color: white;
+    background: #647182;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
