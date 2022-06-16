@@ -1,0 +1,31 @@
+.home-cinema-container{
+    display: flex;
+    background-color: #edf2f9!important;
+    padding: 5px;
+    font-family: 'serif';
+}
+.home-cinema-container>img{
+    width: 60px;
+    height: 60px;
+    margin: 10px 40px 20px 50px;
+}
+.home-cinema-info{
+    margin-right: 20px;
+}
+.description{
+    color: #283e59;
+    background-color: #f6c343;
+    border-color: #f6c343;
+    width: 74%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+.home-info-icon{
+    color:#283e59;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+.icon-globe{
+    margin-left: 0;
+}

@@ -1,0 +1,68 @@
+import React, { useEffect, useState } from "react";
+import ScheduleDataService from "../../services/ScheduleDataService";
+import "./MovieCard.css";
+
+function MovieCard({ data }) {
+  const [schedules, setSchedules] = useState([]);
+
+  useEffect(() => {
+    console.log(data.id);
+    if (data.id) {
+      getAllScheduleByMovie(data.id);
+    }
+  }, [data.id]);
+
+  const getAllScheduleByMovie = (MovieId) => {
+    ScheduleDataService.getAllByMovieId(MovieId)
+      .then((res) => {
+        setSchedules(res.data);
+        console.log(res.data);
+      })
+      .catch((e) => console.log(e));
+  };
+
+  const convertStringToDate = (str) => {
+    const datetime = str.split(" ");
+    console.log(datetime);
+    const dates = datetime[0].split("/");
+    const times = datetime[1].split(":");
+    //  19/11/2022 8:00
+    // dates= [19,11,2022]
+    // times =[8,0]
+    return new Date(dates[2], dates[1], dates[0], times[0], times[1]);
+  };
+  return (
+    <div className="home-container">
+      <div className="movie-card movie-card-body">
+        <img src={require(`../../assets/images/${data.image}`)} alt="" />
+        <div className="home-movie-info">
+          <h4 className="home-movie-info-name">{data.name}</h4>
+          <span className="home-movie-duration text-muted">
+            {data.duration} phút
+          </span>
+          <a href="/"> trailer</a>
+          <h4> 2D Phụ đề tiếng Việt</h4>
+          {schedules ? (
+            <div className="home-movie-time">
+              {schedules.map((scheduleData) => {
+                const schedule = convertStringToDate(scheduleData.datetime);
+                console.log(schedule);
+                const hours = schedule.getHours();
+                const minutes = schedule.getMinutes();
+                return (
+                  <div key={schedule.id} className="home-movie-time items-time">
+                    {hours}:{minutes < 10 ? "0" + minutes : minutes}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div>Khong co lich chiếu</div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default MovieCard;
