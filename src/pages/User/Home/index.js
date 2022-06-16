@@ -1,48 +1,26 @@
-import {faCircleInfo, faGlobe,faList} from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleInfo,
+  faGlobe,
+  faList,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
 import MovieCard from "../../../components/MovieCard";
 import ScheduleHome from "../../../components/SchedulesHome";
+import MovieDataService from "../../../services/MovieDataService";
 import "./Home.css";
 
 function Home() {
-  const movies = [
-    {
-      id: 1,
-      name: "DORAEMON: NOBITA VÀ CUỘC CHIẾN VŨ TRỤ TÍ HON 2020",
-      description:
-        "Nobita tình cờ gặp được người ngoài hành tinh tí hon Papi, vốn là Tổng thống của hành tinh Pirika, chạy trốn tới Trái Đất để thoát khỏi những kẻ nổi loạn nơi quê nhà. Doraemon, Nobita và hội bạn thân dùng bảo bối đèn pin thu nhỏ biến đổi theo kích cỡ giống Papi để chơi cùng cậu bé. Thế nhưng, một tàu chiến không gian tấn công cả nhóm. Cảm thấy có trách nhiệm vì liên lụy mọi người, Papi quyết định một mình đương đầu với quân phiến loạn tàn ác. Doraemon và các bạn lên đường đến hành tinh Pirika, sát cánh bên người bạn của mình.",
+  const [movies, setMovies] = useState([]);
 
-      director: "Susumu Yamaguchi",
-      duration: 120,
-      image:
-        "https://hcm01.vstorage.vngcloud.vn/v1/AUTH_0e0c1e7edc044168a7f510dc6edd223b/media-prd/cache/short/62748ad93f056487193911.jpg",
-      startDate: "27/05/2022",
-    },
-    {
-      id: 2,
-      name: "DORAEMON: NOBITA VÀ CUỘC CHIẾN VŨ TRỤ TÍ HON 2021",
-      description:
-        "Nobita tình cờ gặp được người ngoài hành tinh tí hon Papi, vốn là Tổng thống của hành tinh Pirika, chạy trốn tới Trái Đất để thoát khỏi những kẻ nổi loạn nơi quê nhà. Doraemon, Nobita và hội bạn thân dùng bảo bối đèn pin thu nhỏ biến đổi theo kích cỡ giống Papi để chơi cùng cậu bé. Thế nhưng, một tàu chiến không gian tấn công cả nhóm. Cảm thấy có trách nhiệm vì liên lụy mọi người, Papi quyết định một mình đương đầu với quân phiến loạn tàn ác. Doraemon và các bạn lên đường đến hành tinh Pirika, sát cánh bên người bạn của mình.",
+  const getAllMovies = () => {
+    MovieDataService.getAll().then((res) => setMovies(res.data));
+  };
 
-      director: "Susumu Yamaguchi",
-      duration: 120,
-      image:
-        "https://hcm01.vstorage.vngcloud.vn/v1/AUTH_0e0c1e7edc044168a7f510dc6edd223b/media-prd/cache/short/62748ad93f056487193911.jpg",
-      startDate: "27/05/2022",
-    },
-    {
-      id: 3,
-      name: "DORAEMON: NOBITA VÀ CUỘC CHIẾN VŨ TRỤ TÍ HON 2022",
-      description:
-        "Nobita tình cờ gặp được người ngoài hành tinh tí hon Papi, vốn là Tổng thống của hành tinh Pirika, chạy trốn tới Trái Đất để thoát khỏi những kẻ nổi loạn nơi quê nhà. Doraemon, Nobita và hội bạn thân dùng bảo bối đèn pin thu nhỏ biến đổi theo kích cỡ giống Papi để chơi cùng cậu bé. Thế nhưng, một tàu chiến không gian tấn công cả nhóm. Cảm thấy có trách nhiệm vì liên lụy mọi người, Papi quyết định một mình đương đầu với quân phiến loạn tàn ác. Doraemon và các bạn lên đường đến hành tinh Pirika, sát cánh bên người bạn của mình.",
+  useEffect(() => {
+    getAllMovies();
+  }, []);
 
-      director: "Susumu Yamaguchi",
-      duration: 120,
-      image:
-        "https://hcm01.vstorage.vngcloud.vn/v1/AUTH_0e0c1e7edc044168a7f510dc6edd223b/media-prd/cache/short/62748ad93f056487193911.jpg",
-      startDate: "27/05/2022",
-    },
-  ];
   return (
     <div>
       <div className="home-cinema-container">
