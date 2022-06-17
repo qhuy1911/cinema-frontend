@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ScheduleDataService from "../../services/ScheduleDataService";
 import "./MovieCard.css";
-import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 function MovieCard({ data }) {
   const [schedules, setSchedules] = useState([]);
@@ -38,14 +37,15 @@ function MovieCard({ data }) {
       <div className="movie-card movie-card-body">
         <img src={require(`../../assets/images/${data.image}`)} alt="" />
         <div className="home-movie-info">
-        <Link to={`/movie/${data.id}`}>
-          <h4 className="home-movie-info-name">{data.name}</h4>
+          <Link to={`/movie/${data.id}`}>
+            <h4 className="home-movie-info-name">{data.name}</h4>
           </Link>
           <span className="home-movie-duration text-muted">
             {data.duration} phút
           </span>
           <Link to={`/movie/${data.id}`}>
-          <a href="/"> trailer</a></Link>
+            <a href="/"> trailer</a>
+          </Link>
           <h4> 2D Phụ đề tiếng Việt</h4>
           {schedules ? (
             <div className="home-movie-time">
