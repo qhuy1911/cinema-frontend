@@ -58,10 +58,10 @@ function Movie() {
       <h3 style={{ color: "#e63757" }}>Video Trailer</h3>
       <iframe
         className="movie_trailer"
-        src={`https://www.youtube.com/embed/${movie.trailer}`}
-        frameborder="0"
+        src={`https://www.youtube-nocookie.com/embed/${movie.trailer}`}
+        frameBorder="0"
         allow="autoplay; encrypted-media"
-        allowfullscreen
+        allowFullScreen
         title="video"
       />{" "}
     </>
