@@ -5,6 +5,9 @@ import Seat from "../pages/User/Seat";
 import Checkout from "../pages/User/Checkout";
 import Ticket from "../pages/User/Ticket";
 import MoviesList from "../pages/Admin/MoviesList";
+import ScheduleList from "../pages/Admin/ScheduleList";
+import RoomList from "../pages/Admin/RoomList";
+import SeatList from "../pages/Admin/SeatList";
 
 const publicRoutes = [
   //User
@@ -15,7 +18,10 @@ const publicRoutes = [
   { path: "/ticket", component: Ticket },
 
   // admin
-  { path: "/movies", component: MoviesList, layout: AdminLayout },
+  { path: "/admin/movies", component: MoviesList, layout: AdminLayout },
+  { path: "/admin/schedule", component: ScheduleList, layout: AdminLayout},
+  { path: "/admin/rooms", component: RoomList, layout: AdminLayout},
+  { path: "/admin/seats", component: SeatList, layout: AdminLayout}
 ];
 
 const privateRoutes = [];
