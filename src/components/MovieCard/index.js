@@ -64,12 +64,14 @@ function MovieCard({ data, dataSchedule }) {
                   );
                 } else {
                   return (
-                    <div
-                      key={schedule.id}
-                      className="home-movie-time items-time "
-                    >
-                      {hours}:{minutes < 10 ? "0" + minutes : minutes}
-                    </div>
+                    <Link to={"/"} className="navLink">
+                      <div
+                        key={schedule.id}
+                        className="home-movie-time items-time "
+                      >
+                        {hours}:{minutes < 10 ? "0" + minutes : minutes}
+                      </div>
+                    </Link>
                   );
                 }
               })}
@@ -82,5 +84,4 @@ function MovieCard({ data, dataSchedule }) {
     </div>
   );
 }
-
 export default MovieCard;

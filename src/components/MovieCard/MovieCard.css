@@ -60,6 +60,12 @@
     background-color: rgb(56, 72, 99);
     color: white;
 }
+.navLink{
+    color: rgb(56, 72, 99);
+}
+.navLink:hover{
+    text-decoration: none;
+}
 /* button date disabled action */
 .home-movie-time.items-time.disabled{
     pointer-events: none;
