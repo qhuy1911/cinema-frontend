@@ -2,10 +2,19 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import AuthService from "../../services/AuthService";
 import "./Navbar.css";
 
 function Navbar() {
+  const [currentUser, setCurrentUser] = useState(() =>
+    AuthService.getCurrentUser()
+  );
   const [showAction, setShowAction] = useState(false);
+
+  const onLogout = () => {
+    AuthService.logout();
+    setCurrentUser(AuthService.getCurrentUser());
+  };
 
   return (
     <header className="navbar-wrapper">
@@ -39,14 +48,30 @@ function Navbar() {
               setShowAction(!showAction);
             }}
           />
-          {showAction === true && (
-            <ul className="navbar-user-action">
-              <li className="navbar-user-action-items">Trang cá nhân</li>
-              <li className="navbar-user-action-items">Quản lý tài khoản</li>
-              <li className="navbar-user-action-items">Lịch sử mua vé</li>
-              <li className="navbar-user-action-items">Đăng xuất</li>
-            </ul>
-          )}
+          {showAction === true &&
+            (currentUser ? (
+              <ul className="navbar-user-action">
+                <li className="navbar-user-action-items">Trang cá nhân</li>
+                <li className="navbar-user-action-items">Quản lý tài khoản</li>
+                <li className="navbar-user-action-items">Lịch sử mua vé</li>
+                <li className="navbar-user-action-items" onClick={onLogout}>
+                  Đăng xuất
+                </li>
+              </ul>
+            ) : (
+              <ul className="navbar-user-action">
+                <li className="navbar-user-action-items">
+                  <Link to={"/login"} className="navbar-user-action-link">
+                    Đăng nhập
+                  </Link>
+                </li>
+                <li className="navbar-user-action-items">
+                  <Link to={"/register"} className="navbar-user-action-link">
+                    Đăng ký
+                  </Link>
+                </li>
+              </ul>
+            ))}
         </div>
       </div>
     </header>

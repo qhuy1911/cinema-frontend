@@ -42,7 +42,7 @@ function MovieCard({ data, dataSchedule }) {
             {data.duration} phút
           </span>
           <Link to={`/movie/${data.id}`}>trailer</Link>
-          <h4> 2D Phụ đề tiếng Việt</h4>
+          <p> 2D Phụ đề tiếng Việt</p>
           {schedules ? (
             <div className="home-movie-time">
               {schedules.map((scheduleData) => {
