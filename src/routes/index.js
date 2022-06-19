@@ -16,14 +16,13 @@ const publicRoutes = [
   { path: "/checkout", component: Checkout },
   { path: "/ticket", component: Ticket },
 
-  // admin
-  { path: "/movies", component: MoviesList, layout: AdminLayout },
-
   // auth
   { path: "/login", component: Login, layout: null },
   { path: "/register", component: Register, layout: null },
 ];
 
-const privateRoutes = [];
+const privateRoutes = [
+  { path: "/movies", component: MoviesList, layout: AdminLayout },
+];
 
 export { publicRoutes, privateRoutes };
