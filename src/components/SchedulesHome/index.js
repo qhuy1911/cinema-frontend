@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import ScheduleDataService from "../../services/ScheduleDataService";
 import { convertStringToDate } from "../MovieCard";
@@ -19,7 +20,9 @@ function ScheduleHome(props) {
   useEffect(() => {
     getAllSchedule();
   }, []);
-
+  useEffect(() => {
+    handleShowMovies(0, dates[0]);
+  }, [schedules]);
   const getAllSchedule = () => {
     ScheduleDataService.getAll()
       .then((res) => {

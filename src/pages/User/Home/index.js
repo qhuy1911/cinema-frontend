@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import MovieCard from "../../../components/MovieCard";
 import ScheduleHome from "../../../components/SchedulesHome";
 import AuthService from "../../../services/AuthService";
-import MovieDataService from "../../../services/MovieDataService";
 import "./Home.css";
 
 function Home() {
@@ -14,12 +13,8 @@ function Home() {
   let navigate = useNavigate();
 
   const [dates, setDates] = useState([]);
-  // gọi  tất cả ds movie trong db
-  const getAllMovies = () => {
-    MovieDataService.getAll().then((res) => setMovies(res.data));
-  };
+
   useEffect(() => {
-    getAllMovies();
     const currentUser = AuthService.getCurrentUser();
     if (currentUser) {
       if (currentUser.roles.includes("ROLE_ADMIN")) {
