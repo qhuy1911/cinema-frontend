@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   faCircleInfo,
   faGlobe,
@@ -5,13 +6,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import MovieCard from "../../../components/MovieCard";
 import ScheduleHome from "../../../components/SchedulesHome";
+import AuthService from "../../../services/AuthService";
 import MovieDataService from "../../../services/MovieDataService";
 import "./Home.css";
 
 function Home() {
   const [movies, setMovies] = useState([]);
+  let navigate = useNavigate();
 
   const getAllMovies = () => {
     MovieDataService.getAll().then((res) => setMovies(res.data));
@@ -19,6 +23,13 @@ function Home() {
 
   useEffect(() => {
     getAllMovies();
+    const currentUser = AuthService.getCurrentUser();
+    if (currentUser) {
+      if (currentUser.roles.includes("ROLE_ADMIN")) {
+        navigate("/movies");
+        // window.location.reload();
+      }
+    }
   }, []);
 
   return (
