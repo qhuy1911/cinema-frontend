@@ -46,7 +46,7 @@ function MovieCard({ data, dataSchedule }) {
           <p> 2D Phụ đề tiếng Việt</p>
           {schedules ? (
             <div className="home-movie-time">
-              {schedules.map((scheduleData, index) => {
+              {schedules.map((scheduleData) => {
                 //lay ngay gio hien tai
                 const nowDate = new Date();
                 // get nay gio trong mang schedule
@@ -65,7 +65,11 @@ function MovieCard({ data, dataSchedule }) {
                   );
                 } else {
                   return (
-                    <Link to={"/"} className="navLink" key={scheduleData.id}>
+                    <Link
+                      to={`/schedules/${scheduleData.id}/seats`}
+                      className="navLink"
+                      key={scheduleData.id}
+                    >
                       <div className="home-movie-time items-time ">
                         {hours}:{minutes < 10 ? "0" + minutes : minutes}
                       </div>
