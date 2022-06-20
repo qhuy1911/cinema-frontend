@@ -21,11 +21,11 @@
   flex-direction: column;
 }
 .ticket-system .top .printer {
-    width: 90%;
-    height: 30px;
-    border: 7px solid rgb(239, 177, 177);
-    border-radius: 20px;
-    box-shadow: 1px 3px 3px 0px rgb(0 0 0 / 20%);
+  width: 90%;
+  height: 30px;
+  border: 7px solid rgb(239, 177, 177);
+  border-radius: 20px;
+  box-shadow: 1px 3px 3px 0px rgb(0 0 0 / 20%);
 }
 .ticket-system .receipts-wrapper {
   overflow: hidden;
@@ -77,14 +77,14 @@
   width: 70px;
   height: 70px;
 }
-.ticket-system .receipts .receipt .description {
+.ticket-system .receipts .receipt .description_ticket {
   margin-left: 20px;
 }
-.ticket-system .receipts .receipt .description h2 {
+.ticket-system .receipts .receipt .description_ticket h2 {
   margin: 0 0 5px 0;
   font-weight: 500;
 }
-.ticket-system .receipts .receipt .description p {
+.ticket-system .receipts .receipt .description_ticket p {
   margin: 0;
   font-weight: 400;
 }
@@ -106,8 +106,8 @@ img {
   max-width: 100%;
   height: auto;
 }
-.title {
-  padding: 0px 40px 10px;
+.title-ticket {
+  padding: 0px 10px 10px;
   color: #3f32e5;
 }
 .cinema {
@@ -120,7 +120,7 @@ img {
 .info {
   padding: 15px 25px;
 }
-h2{
+h2 {
   text-align: center;
 }
 table {
@@ -149,3 +149,8 @@ table td {
   font-size: 48px;
 }
 
+.img-ticket {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

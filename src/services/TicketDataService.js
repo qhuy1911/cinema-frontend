@@ -1,11 +1,11 @@
 import http from "./http-common";
 
-const getTicket = (id) => {
-  return http.get(`/tickets/${id}`);
+const getAllBookingDetails = (id) => {
+  return http.get(`/bookings/${id}/details`);
 };
 
 const TicketDataService = {
-    getTicket
+  getAllBookingDetails
 };
 
 export default TicketDataService;
