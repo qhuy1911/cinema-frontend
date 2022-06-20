@@ -52,7 +52,7 @@ function Login() {
       AuthService.login(username, password).then(
         () => {
           navigate("/");
-          // window.location.reload();
+          window.location.reload();
         },
         (error) => {
           const resMessage =
