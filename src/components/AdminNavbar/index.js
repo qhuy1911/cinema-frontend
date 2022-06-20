@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./AdminNavbar.css";
 
 function AdminNavbar() {
   return (
@@ -9,13 +10,16 @@ function AdminNavbar() {
             <Link to={"/admin/movies"}>Movies</Link>
           </li>
           <li>
-            <Link to={"/admin/schedule"}>Schedule</Link>
+            <Link to={"/admin/schedule"}>Schedules</Link>
           </li>
           <li>
             <Link to={"/admin/rooms"}>Rooms</Link>
           </li>
           <li>
-            <Link to={"/admin/seats"}>Seat</Link>
+            <Link to={"/admin/seats"}>Seats</Link>
+          </li>
+          <li>
+            <Link to={"/admin/bookings"}>Bookings</Link>
           </li>
         </ul>
       </div>

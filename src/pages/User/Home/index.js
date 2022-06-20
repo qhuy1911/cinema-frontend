@@ -18,7 +18,7 @@ function Home() {
     const currentUser = AuthService.getCurrentUser();
     if (currentUser) {
       if (currentUser.roles.includes("ROLE_ADMIN")) {
-        navigate("/movies");
+        navigate("/admin/movies");
         // window.location.reload();
       }
     }

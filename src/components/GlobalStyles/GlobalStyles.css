@@ -52,3 +52,17 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
+
+.btn-add {
+  background-color: #12263f;
+  color: #fff;
+  padding: 8px 4px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.btn-add:hover {
+  background-color: #1b385c;
+  color: #ccc;
+  text-decoration: none;
+}
