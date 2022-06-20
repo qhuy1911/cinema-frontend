@@ -1,0 +1,38 @@
+.footer-area {
+  min-height: 100%;
+  position: relative;
+  top: 80px;
+}
+.footer-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #6cf;
+}
+footer {
+  display: block;
+  width: 100%;
+}
+.gray-bg-6 {
+  background: #eeeeee;
+}
+.ptb-20 {
+  padding-top: 20px;
+}
+.row {
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  display: inline-block;
+  text-align: left;
+}
+.container {
+  width: 100%;
+  text-align: center;
+}
+.footer-logo-img {
+  display: flex;
+}
+.footer-name {
+  padding-top: 2px;
+}

@@ -9,10 +9,8 @@ function MovieCard({ data }) {
   useEffect(() => {
     console.log(data.id);
     if (data.id) {
-      getAllScheduleByMovie(data.id);
-    }
+      getAllScheduleByMovie(data.id);    }
   }, [data.id]);
-
   const getAllScheduleByMovie = (MovieId) => {
     ScheduleDataService.getAllByMovieId(MovieId)
       .then((res) => {

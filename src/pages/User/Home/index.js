@@ -20,7 +20,6 @@ function Home() {
   useEffect(() => {
     getAllMovies();
   }, []);
-
   return (
     <div>
       <div className="home-cinema-container">
