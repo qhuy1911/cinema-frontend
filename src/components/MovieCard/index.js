@@ -55,8 +55,10 @@ function MovieCard({ data }) {
           {schedules ? (
             <div className="home-movie-time">
               {schedules.map((scheduleData) => {
+                //lay ngay gio hien tai
+                const nowDate = new Date();
+                // get nay gio trong mang schedule
                 const schedule = convertStringToDate(scheduleData.datetime);
-                console.log(schedule);
                 const hours = schedule.getHours();
                 const minutes = schedule.getMinutes();
 
