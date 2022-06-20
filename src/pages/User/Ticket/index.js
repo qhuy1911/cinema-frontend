@@ -27,26 +27,26 @@ function Ticket() {
               </h1>
               <div class="poster"></div>
               {allBooking.map((t, key) => {
-                if (key == 0) {
-                  return (
+                return (
+                  key === 0 && (
                     <img
                       class="img-ticket"
                       key={key}
                       src={require(`../../../assets/images/${t.ticket.schedule.movie.image}`)}
                       alt=""
                     />
-                  );
-                }
+                  )
+                );
               })}
               <br></br>
               {allBooking.map((t, key) => {
-                if (key == 0) {
-                  return (
+                return (
+                  key === 0 && (
                     <h2 key={key}>
                       <b key={key}>{t.ticket.schedule.movie.name}</b>
                     </h2>
-                  );
-                }
+                  )
+                );
               })}
               <div class="info">
                 <table>
@@ -54,11 +54,11 @@ function Ticket() {
                     <td>Phòng:</td>
                     <td>
                       {allBooking.map((t, key) => {
-                        if (key == 0) {
-                          return (
+                        return (
+                          key === 0 && (
                             <span key={key}>{t.ticket.schedule.room.name}</span>
-                          );
-                        }
+                          )
+                        );
                       })}
                     </td>
                   </tr>
@@ -77,17 +77,20 @@ function Ticket() {
                   </tr>
                   <tr>
                     <td>Giá:</td>
-                    <td>{price * count}<span>&nbsp;</span>VNĐ</td>
+                    <td>
+                      {price * count}
+                      <span>&nbsp;</span>VNĐ
+                    </td>
                   </tr>
                   <tr>
                     <td>Thời gian: Giờ:</td>
                     <td>
                       {allBooking.map((t, key) => {
-                        if (key == 0) {
-                          return (
+                        return (
+                          key === 0 && (
                             <span key={key}>{t.ticket.schedule.datetime}</span>
-                          );
-                        }
+                          )
+                        );
                       })}
                     </td>
                   </tr>

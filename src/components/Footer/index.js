@@ -4,7 +4,7 @@ function Footer() {
     <footer class="footer-area">
       <div class="footer-bottom  gray-bg-6 ptb-20">
         <div class="container">
-          <div class="row">
+          <div class="footer-row">
             <div class="copyright-2">
               <p class="footer-logo-img">
                 <img
@@ -14,7 +14,6 @@ function Footer() {
                 />
                 <p class="footer-name"> © Cinestar Sinh Viên</p>
               </p>
-              
             </div>
           </div>
         </div>
