@@ -2,25 +2,17 @@ import "./AdminNavbar.css";
 
 function AdminNavbar() {
   return (
-      <div className="admin-navbar-wrapper">
-        <div className="admin-navbar-container">
-         
-          <ul>
-            <li>
-              <a href="/admin/movies">Movies</a>
-            </li>
-            <li>
-              <a href="/admin/schedule">Schedule</a>
-            </li>
-            <li>
-              <a href="/admin/rooms">Rooms</a>
-            </li>
-            <li>
-              <a href="/admin/seats">Seat</a>
-            </li>
-          </ul>
-        </div>
+    <div className="admin-navbar-wrapper">
+      <div className="admin-navbar-container">
+        <h2>Admin Navbar</h2>
+        <ul>
+          <li>Movies</li>
+          <li>Schedule</li>
+          <li>Rooms</li>
+          <li>Seat</li>
+        </ul>
       </div>
+    </div>
   );
 }
 
