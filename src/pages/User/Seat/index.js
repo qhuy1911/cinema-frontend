@@ -1,21 +1,39 @@
 import './Seat.css'
 import clsx from "clsx";
-import { useState } from 'react';
-const price = 45000;
-const seats = Array.from({ length: 16 * 8 }, (_, index) => index)
-function Seat() {
+import { useEffect, useState } from 'react';
+import SeatDataService from '../../../services/SeatDataService';
 
+const price = 45000;
+
+function Seat() {
   const [selectedSeats, setSelectedSeats] = useState([])
+  const [schedule, setSchedule] = useState({});
+
+  useEffect(() => {
+    return (
+      getSchedualeById(1)
+    )
+  }, [])
+  const getSchedualeById = (id) => {
+    SeatDataService.getScheduleById(id)
+      .then((schedule) => {
+        setSchedule(schedule.data.movie)
+
+      })
+
+  }
 
   return <div className="Seat">
-    <div className="Seat-contai"> <ShowCase />
+    <div className="Seat-contai">
+      <ShowCase />
       <Cinema
         selectedSeats={selectedSeats}
-        onSelectedSeatsChange={selectedSeats => setSelectedSeats(selectedSeats)} /></div>
+        onSelectedSeatsChange={selectedSeats => setSelectedSeats(selectedSeats)} />
+    </div>
 
     <div className="Seat-infor">
       <div className="Seat-infor-top">
-        <p className="Seat-infor-top-namefilm">Em và Trịnh</p>
+        <p className="Seat-infor-top-namefilm">{schedule.name}</p>
         <p className="Seat-infor-top-nametheater">Cinestar Sinh Viên</p>
         <span className="Seat-infor-top-total">Tổng số ghế:</span>
         <span className="count">{selectedSeats.length}</span>
@@ -25,7 +43,6 @@ function Seat() {
         <span className="infor-item-total">
           {selectedSeats.length * price}{' '}vnd
         </span>
-
       </div>
       <div className="Seat-infor-bottom">
         <button className="Seat-infor-bottom-button">Tiếp tục</button>
@@ -33,6 +50,7 @@ function Seat() {
     </div>
   </div>
 }
+
 function ShowCase() {
   return (
     <ul className="showcase">
@@ -42,8 +60,18 @@ function ShowCase() {
     </ul>
   )
 }
-function Cinema({ selectedSeats, onSelectedSeatsChange }) {
 
+function Cinema({ selectedSeats, onSelectedSeatsChange }) {
+  const [seat1, setSeat1] = useState([]);
+  useEffect(() => {
+    getSeatByScheduleId(1)
+  }, [])
+  const getSeatByScheduleId = (id) => {
+    SeatDataService.getSeatByScheduleId(id)
+      .then((seats) => {
+        setSeat1(seats.data);
+      })
+  }
   function handleSelectedState(seat) {
     const isSelected = selectedSeats.includes(seat)
     if (isSelected) {
@@ -54,6 +82,7 @@ function Cinema({ selectedSeats, onSelectedSeatsChange }) {
       onSelectedSeatsChange([...selectedSeats, seat])
     }
   }
+
   return (
     <div className="cinema">
       <div className="cinema-screen" > Màn hình</div>
@@ -66,26 +95,28 @@ function Cinema({ selectedSeats, onSelectedSeatsChange }) {
         <p>F</p>
         <p>G</p>
         <p>H</p>
-
       </div>
       <div className="cinema-seats">
-        {seats.map(seat => {
+        {seat1.map(seat => {
           const isSelected = selectedSeats.includes(seat)
+          const isOccupied = +seat.status === 0
           return (
             < span
               tabIndex="0"
-              key={seat}
+              key={seat.id}
               className={clsx(
                 'seat',
                 isSelected && 'selected',
+                isOccupied && 'occupied'
               )
               }
               onClick={() => handleSelectedState(seat)}
-            />
-
+            > {seat.name}
+            </span>
           )
         })}
       </div>
+
     </div>
   )
 }
