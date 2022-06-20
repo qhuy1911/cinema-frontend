@@ -1,11 +1,18 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import AuthService from "../../services/AuthService";
 import "./AdminHeader.css";
 
 function AdminHeader() {
+  let navigate = useNavigate();
   const [showAction, setShowAction] = useState(false);
+
+  const handleLogout = () => {
+    AuthService.logout();
+    navigate("/login");
+  };
 
   return (
     <header className="navbar-wrapper-adminHeader">
@@ -44,7 +51,10 @@ function AdminHeader() {
               <li className="navbar-user-action-items-adminHeader">
                 Trang cá nhân
               </li>
-              <li className="navbar-user-action-items-adminHeader">
+              <li
+                className="navbar-user-action-items-adminHeader"
+                onClick={handleLogout}
+              >
                 Đăng xuất
               </li>
             </ul>

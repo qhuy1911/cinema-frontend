@@ -22,7 +22,7 @@ function App() {
         setIsAdmin(true);
       }
     }
-  }, []);
+  }, [isAdmin]);
   return (
     <Router>
       <div className="App">
