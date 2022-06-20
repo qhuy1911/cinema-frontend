@@ -83,6 +83,11 @@
   cursor: pointer;
 }
 
-.navbar-user-action-items:hover {
-  color: #12263f
+.navbar-user-action-items:hover .navbar-user-action-link {
+  color: #12263f;
+  text-decoration: none;
+}
+
+.navbar-user-action-link {
+  color: #6e84a3;
 }
