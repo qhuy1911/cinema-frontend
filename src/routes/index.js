@@ -16,6 +16,7 @@ const publicRoutes = [
   { path: "/seat", component: Seat },
   { path: "/checkout", component: Checkout },
   { path: "/ticket", component: Ticket },
+  { path: "/schedules/:id/seats", component: Seat },
 
   // admin
   { path: "/admin/movies", component: MoviesList, layout: AdminLayout },
