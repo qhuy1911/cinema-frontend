@@ -1,9 +1,11 @@
-import React, { useState, useRef } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useRef, useEffect } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../services/AuthService";
 import { isEmail } from "validator";
+import { useNavigate } from "react-router-dom";
 
 const required = (value) => {
   if (!value) {
@@ -44,6 +46,7 @@ const vpassword = (value) => {
 };
 
 function Register() {
+  let navigate = useNavigate();
   const form = useRef();
   const checkBtn = useRef();
   const [fullname, setFullname] = useState("");
@@ -54,6 +57,13 @@ function Register() {
   const [address, setAddress] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+    if (user) {
+      navigate("/");
+    }
+  }, []);
 
   const onChangefullname = (e) => {
     const fullname = e.target.value;

@@ -1,15 +1,22 @@
-import "./AdminNavbar.css";
+import { Link } from "react-router-dom";
 
 function AdminNavbar() {
   return (
     <div className="admin-navbar-wrapper">
       <div className="admin-navbar-container">
-        <h2>Admin Navbar</h2>
         <ul>
-          <li>Movies</li>
-          <li>Schedule</li>
-          <li>Rooms</li>
-          <li>Seat</li>
+          <li>
+            <Link to={"/admin/movies"}>Movies</Link>
+          </li>
+          <li>
+            <Link to={"/admin/schedule"}>Schedule</Link>
+          </li>
+          <li>
+            <Link to={"/admin/rooms"}>Rooms</Link>
+          </li>
+          <li>
+            <Link to={"/admin/seats"}>Seat</Link>
+          </li>
         </ul>
       </div>
     </div>

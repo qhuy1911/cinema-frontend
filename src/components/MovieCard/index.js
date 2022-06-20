@@ -1,35 +1,36 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import ScheduleDataService from "../../services/ScheduleDataService";
 import "./MovieCard.css";
 import { Link } from "react-router-dom";
 
-function MovieCard({ data }) {
+export const convertStringToDate = (str) => {
+  const datetime = str.split(" ");
+  const dates = datetime[0].split("/");
+  const times = datetime[1].split(":");
+  //  19/11/2022 8:00
+  // dates= [19,11,2022]
+  // times =[8,0]
+  return new Date(dates[2], dates[1] - 1, dates[0], times[0], times[1]);
+};
+function MovieCard({ data, dataSchedule }) {
   const [schedules, setSchedules] = useState([]);
 
   useEffect(() => {
-    console.log(data.id);
     if (data.id) {
-      getAllScheduleByMovie(data.id);    }
+      handleDateTime(data.id);
+    }
   }, [data.id]);
-  const getAllScheduleByMovie = (MovieId) => {
-    ScheduleDataService.getAllByMovieId(MovieId)
-      .then((res) => {
-        setSchedules(res.data);
-        console.log(res.data);
-      })
-      .catch((e) => console.log(e));
+
+  const handleDateTime = (id) => {
+    const dateTime = [];
+    dataSchedule.forEach((element) => {
+      if (element.movie.id === id) {
+        dateTime.push(element);
+      }
+    });
+    setSchedules(dateTime);
   };
 
-  const convertStringToDate = (str) => {
-    const datetime = str.split(" ");
-    console.log(datetime);
-    const dates = datetime[0].split("/");
-    const times = datetime[1].split(":");
-    //  19/11/2022 8:00
-    // dates= [19,11,2022]
-    // times =[8,0]
-    return new Date(dates[2], dates[1], dates[0], times[0], times[1]);
-  };
   return (
     <div className="home-container">
       <div className="movie-card movie-card-body">
@@ -41,31 +42,48 @@ function MovieCard({ data }) {
           <span className="home-movie-duration text-muted">
             {data.duration} phút
           </span>
-          <Link to={`/movie/${data.id}`}>
-            <a href="/"> trailer</a>
-          </Link>
-          <h4> 2D Phụ đề tiếng Việt</h4>
+          <Link to={`/movie/${data.id}`}>trailer</Link>
+          <p> 2D Phụ đề tiếng Việt</p>
           {schedules ? (
             <div className="home-movie-time">
               {schedules.map((scheduleData) => {
+                //lay ngay gio hien tai
+                const nowDate = new Date();
+                // get nay gio trong mang schedule
                 const schedule = convertStringToDate(scheduleData.datetime);
-                console.log(schedule);
                 const hours = schedule.getHours();
                 const minutes = schedule.getMinutes();
-                return (
-                  <div key={schedule.id} className="home-movie-time items-time">
-                    {hours}:{minutes < 10 ? "0" + minutes : minutes}
-                  </div>
-                );
+
+                if (nowDate.getTime() > schedule.getTime()) {
+                  return (
+                    <div
+                      key={scheduleData.id}
+                      className="home-movie-time items-time disabled"
+                    >
+                      {hours}:{minutes < 10 ? "0" + minutes : minutes}
+                    </div>
+                  );
+                } else {
+                  return (
+                    <Link
+                      to={`/schedules/${scheduleData.id}/seats`}
+                      className="navLink"
+                      key={scheduleData.id}
+                    >
+                      <div className="home-movie-time items-time ">
+                        {hours}:{minutes < 10 ? "0" + minutes : minutes}
+                      </div>
+                    </Link>
+                  );
+                }
               })}
             </div>
           ) : (
-            <div>Khong co lich chiếu</div>
+            <div> Không có lịch chiếu </div>
           )}
         </div>
       </div>
     </div>
   );
 }
-
 export default MovieCard;

@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useRef, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 import Form from "react-validation/build/form";
@@ -24,6 +25,13 @@ function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+    if (user) {
+      navigate("/");
+    }
+  }, []);
 
   const onChangeUsername = (e) => {
     const username = e.target.value;
