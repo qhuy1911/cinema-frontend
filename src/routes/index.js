@@ -19,7 +19,7 @@ const publicRoutes = [
   //User
   { path: "/", component: Home },
   { path: "/movie/:id", component: Movie },
-  { path: "/seat", component: Seat },
+  { path: "/seat/:id", component: Seat },
   { path: "/checkout", component: Checkout },
   { path: "/ticket", component: Ticket },
   { path: "/schedules/:id/seats", component: Seat },

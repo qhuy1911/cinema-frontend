@@ -52,7 +52,7 @@
     margin-top: 20px;
 }
 
-.cinema .cinema-leter {
+.cinema-leter {
     position: absolute;
     height: 63px;
     top: 16.5%;
@@ -60,7 +60,7 @@
     height: 100%;
 }
 
-.cinema .cinema-leter p {
+.cinema-leter p {
     height: 30px;
     width: 30px;
     color: white;
@@ -104,13 +104,19 @@
     transition: transform 0.3s ease-in-out;
     position: relative;
     top: 1px;
+    font-size: 12px;
+    color: #dfdfdf;
+    text-align: center;
+    padding-top: 6px;
 }
 
 .cinema .cinema-seats .seat:not(.occupied):hover,
 .cinema .cinema-seats .seat:not(.occupied):focus {
     cursor: pointer;
-    background: #c1eac5;
+    background: #00b300;
     transform: scale(1.2);
+    color: white;
+    box-shadow: 0 0 11px #00b300;
 }
 
 .cinema .cinema-seats .seat.selected::after {
@@ -122,10 +128,13 @@
     height: 12px;
     border-radius: 100%;
     background: transparent;
-    border: 1px solid #7bc47f;
+    border: 1px solid transparent;
     animation: show-off 0.8s;
-    visibility: hidden;
+    visibility: visible;
 }
+
+
+
 
 @keyframes show-off {
     0% {
@@ -140,8 +149,18 @@
     }
 }
 
+.seat.occupied {
+    background: #adadad !important;
+    pointer-events: none;
+    cursor: default;
+    color: #adadad !important;
+
+
+}
+
 .seat.selected {
-    background: #7bc47f !important;
+    background: #00b300 !important;
+
 }
 
 /* .seat.occupied {
@@ -190,7 +209,7 @@
     height: 30px;
     width: 30px;
     margin: 0 12px;
-    background-color: #7BC47F;
+    background-color: #00b300;
     border-radius: 3px;
 }
 
@@ -205,7 +224,7 @@
     height: 30px;
     width: 30px;
     margin: 0 12px;
-    background-color: #ba3131;
+    background-color: #adadad;
     border-radius: 3px;
 }
 
@@ -215,7 +234,7 @@
     border-radius: 10px;
     background: white;
     color: #181818;
-    font-size: 14px;
+    font-size: 13px;
     padding: 10px;
     margin-bottom: 20px;
     font-weight: 350px;
