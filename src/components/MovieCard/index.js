@@ -1,36 +1,42 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
+import ScheduleDataService from "../../services/ScheduleDataService";
 import "./MovieCard.css";
-import { Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  NavLink,
+} from "react-router-dom";
 
-export const convertStringToDate = (str) => {
-  const datetime = str.split(" ");
-  const dates = datetime[0].split("/");
-  const times = datetime[1].split(":");
-  //  19/11/2022 8:00
-  // dates= [19,11,2022]
-  // times =[8,0]
-  return new Date(dates[2], dates[1] - 1, dates[0], times[0], times[1]);
-};
-function MovieCard({ data, dataSchedule }) {
+function MovieCard({ data }) {
   const [schedules, setSchedules] = useState([]);
 
   useEffect(() => {
+    console.log(data.id);
     if (data.id) {
-      handleDateTime(data.id);
+      getAllScheduleByMovie(data.id);
     }
   }, [data.id]);
 
-  const handleDateTime = (id) => {
-    const dateTime = [];
-    dataSchedule.forEach((element) => {
-      if (element.movie.id === id) {
-        dateTime.push(element);
-      }
-    });
-    setSchedules(dateTime);
+  const getAllScheduleByMovie = (MovieId) => {
+    ScheduleDataService.getAllByMovieId(MovieId)
+      .then((res) => {
+        setSchedules(res.data);
+        console.log(res.data);
+      })
+      .catch((e) => console.log(e));
   };
 
+  const convertStringToDate = (str) => {
+    const datetime = str.split(" ");
+    console.log(datetime);
+    const dates = datetime[0].split("/");
+    const times = datetime[1].split(":");
+    //  19/11/2022 8:00
+    // dates= [19,11,2022]
+    // times =[8,0]
+    return new Date(dates[2], dates[1], dates[0], times[0], times[1]);
+  };
   return (
     <div className="home-container">
       <div className="movie-card movie-card-body">
@@ -42,8 +48,10 @@ function MovieCard({ data, dataSchedule }) {
           <span className="home-movie-duration text-muted">
             {data.duration} phút
           </span>
-          <Link to={`/movie/${data.id}`}>trailer</Link>
-          <p> 2D Phụ đề tiếng Việt</p>
+          <Link to={`/movie/${data.id}`}>
+            <a href="/"> trailer</a>
+          </Link>
+          <h4> 2D Phụ đề tiếng Việt</h4>
           {schedules ? (
             <div className="home-movie-time">
               {schedules.map((scheduleData) => {
@@ -79,11 +87,12 @@ function MovieCard({ data, dataSchedule }) {
               })}
             </div>
           ) : (
-            <div> Không có lịch chiếu </div>
+            <div>Khong co lich chiếu</div>
           )}
         </div>
       </div>
     </div>
   );
 }
+
 export default MovieCard;

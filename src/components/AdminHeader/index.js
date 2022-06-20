@@ -2,37 +2,37 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+import "./AdminHeader.css";
 
-function Navbar() {
+function AdminHeader() {
   const [showAction, setShowAction] = useState(false);
 
   return (
-    <header className="navbar-wrapper">
-      <div className="navbar-container">
-        <div className="navbar-logo">
+    <header className="navbar-wrapper-adminHeader">
+      <div className="navbar-container-adminHeader">
+        <div className="navbar-logo-adminHeader">
           <Link to="/">
             <img
-              className="navbar-logo-img"
+              className="navbar-logo-img-adminHeader"
               src="https://moveek.com/bundles/ornweb/img/logo.png"
               alt="logo"
             />
           </Link>
         </div>
-        <div className="navbar-search">
+        <div className="navbar-search-adminHeader">
           <input
-            className="navbar-search-input"
+            className="navbar-search-input-adminHeader"
             type="text"
             placeholder="Từ khóa tìm kiếm..."
           />
           <FontAwesomeIcon
-            className="navbar-search-icon"
+            className="navbar-search-icon-adminHeader"
             icon={faMagnifyingGlass}
           />
         </div>
-        <div className="navbar-user">
+        <div className="navbar-user-adminHeader">
           <img
-            className="navbar-user-img"
+            className="navbar-user-img-adminHeader"
             src="https://moveek.com/bundles/ornweb/img/no-avatar.png"
             alt="user"
             onClick={() => {
@@ -40,11 +40,9 @@ function Navbar() {
             }}
           />
           {showAction === true && (
-            <ul className="navbar-user-action">
-              <li className="navbar-user-action-items">Trang cá nhân</li>
-              <li className="navbar-user-action-items">Quản lý tài khoản</li>
-              <li className="navbar-user-action-items">Lịch sử mua vé</li>
-              <li className="navbar-user-action-items">Đăng xuất</li>
+            <ul className="navbar-user-action-adminHeader">
+              <li className="navbar-user-action-items-adminHeader">Trang cá nhân</li>
+              <li className="navbar-user-action-items-adminHeader">Đăng xuất</li>
             </ul>
           )}
         </div>
@@ -53,4 +51,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default AdminHeader;

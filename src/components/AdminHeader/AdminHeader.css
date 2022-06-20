@@ -1,15 +1,15 @@
-.navbar-wrapper {
+.navbar-wrapper-adminHeader {
   width: 100%;
   height: var(--navbar-height);
-  background-color: #fff;
+  background-color: rgb(170, 240, 240);
   box-shadow: 0 1px 1px rgb(0 0 0 / 12%);
   display: flex;
-  justify-content: center;
+  padding-left: 25px;
 }
 
-.navbar-container {
+.navbar-container-adminHeader {
   height: 100%;
-  width: var(--navbar-width);
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,33 +17,32 @@
   padding-right: 12px;
 }
 
-/* Navbar logo */
-/* .navbar-logo {} */
-
-.navbar-logo-img {
-  width: 92px;
-  height: 24px;
+.navbar-logo-img-adminHeader {
+  width: 110px;
+  height: 50px;
 }
 
-/* Navbar search */
-.navbar-search {
+
+.navbar-search-adminHeader {
   width: 250px;
   padding: 8px 16px;
   color: #12263f;
-  border: 1px solid #d2ddec;
+  border: 2px solid #12263f;
   border-radius: 20px;
   display: flex;
   gap: 8px;
   justify-content: space-between;
   align-items: center;
+  padding-left: 25px;
 }
 
-.navbar-search-input {
+.navbar-search-input-adminHeader {
   border: none;
   font-size: 14px;
+  background-color: rgb(170, 240, 240);
 }
 
-.navbar-search-icon {
+.navbar-search-icon-adminHeader {
   width: 18px;
   height: 18px;
   cursor: pointer;
@@ -51,18 +50,18 @@
 
 
 /* Navbar user */
-.navbar-user {
+.navbar-user-adminHeader {
   position: relative;
 }
 
-.navbar-user-img {
+.navbar-user-img-adminHeader {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
 }
 
-.navbar-user-action {
+.navbar-user-action-adminHeader {
   position: absolute;
   width: max-content;
   right: 0;
@@ -75,7 +74,7 @@
   transition: all 1s linear;
 }
 
-.navbar-user-action-items {
+.navbar-user-action-items-adminHeader {
   text-decoration: none;
   color: #6e84a3;
   padding: 6px 24px;
@@ -83,6 +82,6 @@
   cursor: pointer;
 }
 
-.navbar-user-action-items:hover {
+.navbar-user-action-items-adminHeader:hover {
   color: #12263f
 }
