@@ -77,7 +77,7 @@ function Ticket() {
                   </tr>
                   <tr>
                     <td>Giá:</td>
-                    <td>{price * count}VNĐ</td>
+                    <td>{price * count}<span>&nbsp;</span>VNĐ</td>
                   </tr>
                   <tr>
                     <td>Thời gian: Giờ:</td>
