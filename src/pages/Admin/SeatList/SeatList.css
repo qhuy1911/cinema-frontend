@@ -1,0 +1,13 @@
+.empty-table{
+    padding: 10px;
+    margin-left: 100px;
+
+}
+.seat-list{
+    border-style: solid;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 5px;
+}
+.seat-list.disable{
+    background-color: #DFDFDF;
+}

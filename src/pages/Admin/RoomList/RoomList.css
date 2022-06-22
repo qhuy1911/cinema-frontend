@@ -1,0 +1,26 @@
+.form-room-warapper{
+    display: flex;
+    justify-content: center;
+}
+.form-room{
+    width: 600px;
+}
+.btn-form-room{
+    margin-top: 10px ;
+    margin-right: 10px;
+}
+.delete-action{
+    cursor: pointer;
+    color: rgb(176, 27, 27);
+}
+.delete-action:hover{
+    color: rgb(187, 138, 138);
+}
+.edit-action{
+    cursor: pointer;
+    margin-left: 10px;
+    color: #12263f;
+}
+.edit-action:hover{
+    color: #60758e;
+}
