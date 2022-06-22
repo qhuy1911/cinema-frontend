@@ -2,12 +2,18 @@ import './Seat.css'
 import clsx from "clsx";
 import { useEffect, useState } from 'react';
 import SeatDataService from '../../../services/SeatDataService';
+import { useNavigate } from 'react-router-dom';
 
 const price = 45000;
 
 function Seat() {
   const [selectedSeats, setSelectedSeats] = useState([])
   const [schedule, setSchedule] = useState({});
+  const navigate = useNavigate();
+  // console.log(schedule)
+  const toCheckout=()=>{
+    navigate('/checkout',{state:{seats:selectedSeats,schedule:schedule}});
+      }
 
   useEffect(() => {
     return (
@@ -16,8 +22,8 @@ function Seat() {
   }, [])
   const getSchedualeById = (id) => {
     SeatDataService.getScheduleById(id)
-      .then((schedule) => {
-        setSchedule(schedule.data.movie)
+      .then((res) => {
+        setSchedule(res.data)
 
       })
 
@@ -33,7 +39,7 @@ function Seat() {
 
     <div className="Seat-infor">
       <div className="Seat-infor-top">
-        <p className="Seat-infor-top-namefilm">{schedule.name}</p>
+        {/* <p className="Seat-infor-top-namefilm">{schedule.movie.id}</p> */}
         <p className="Seat-infor-top-nametheater">Cinestar Sinh Viên</p>
         <span className="Seat-infor-top-total">Tổng số ghế:</span>
         <span className="count">{selectedSeats.length}</span>
@@ -45,7 +51,9 @@ function Seat() {
         </span>
       </div>
       <div className="Seat-infor-bottom">
-        <button className="Seat-infor-bottom-button">Tiếp tục</button>
+        
+        <button className="Seat-infor-bottom-button"  onClick={()=>toCheckout()}>Tiếp tục</button>
+        
       </div>
     </div>
   </div>
@@ -63,6 +71,7 @@ function ShowCase() {
 
 function Cinema({ selectedSeats, onSelectedSeatsChange }) {
   const [seat1, setSeat1] = useState([]);
+  const seats = [];
   useEffect(() => {
     getSeatByScheduleId(1)
   }, [])
@@ -87,14 +96,6 @@ function Cinema({ selectedSeats, onSelectedSeatsChange }) {
     <div className="cinema">
       <div className="cinema-screen" > Màn hình</div>
       <div className="cinema-leter">
-        <p>A</p>
-        <p>B</p>
-        <p>C</p>
-        <p>D</p>
-        <p>E</p>
-        <p>F</p>
-        <p>G</p>
-        <p>H</p>
       </div>
       <div className="cinema-seats">
         {seat1.map(seat => {

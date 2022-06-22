@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "./MovieCard.css";
 import { Link } from "react-router-dom";
+import AuthService from "../../services/AuthService";
 
 export const convertStringToDate = (str) => {
   const datetime = str.split(" ");
@@ -14,7 +15,7 @@ export const convertStringToDate = (str) => {
 };
 function MovieCard({ data, dataSchedule }) {
   const [schedules, setSchedules] = useState([]);
-
+  const user = AuthService.getCurrentUser();
   useEffect(() => {
     if (data.id) {
       handleDateTime(data.id);
@@ -65,7 +66,8 @@ function MovieCard({ data, dataSchedule }) {
                   );
                 } else {
                   return (
-                    <Link
+                    <>
+                    {user?<Link
                       to={`/schedules/${scheduleData.id}/seats`}
                       className="navLink"
                       key={scheduleData.id}
@@ -73,7 +75,16 @@ function MovieCard({ data, dataSchedule }) {
                       <div className="home-movie-time items-time ">
                         {hours}:{minutes < 10 ? "0" + minutes : minutes}
                       </div>
-                    </Link>
+                    </Link>:<Link
+                      to={`/login`}
+                      className="navLink"
+                      key={scheduleData.id}
+                    >
+                      <div className="home-movie-time items-time ">
+                        {hours}:{minutes < 10 ? "0" + minutes : minutes}
+                      </div>
+                    </Link>}
+                    </>
                   );
                 }
               })}

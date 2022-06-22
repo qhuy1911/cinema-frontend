@@ -1,6 +1,6 @@
 import "./OrderSummary.css";
 
-function OrderSummary() {
+function OrderSummary({quantity}) {
   return (
     <div className="summary-wrapper">
       <div className="summary-heading">Tóm tắt đơn hàng</div>
@@ -11,7 +11,7 @@ function OrderSummary() {
       </div>
       <div className="summary-item">
         <span>Standard</span>
-        <span>2</span>
+        <span>{quantity}</span>
         <span>90,000 đ</span>
       </div>
       <div className="summary-total">

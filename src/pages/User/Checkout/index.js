@@ -1,5 +1,10 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import OrderSummary from "../../../components/OrderSummary";
+import AuthService from "../../../services/AuthService";
+import BookingDetailService from "../../../services/BookingDetailService";
+import BookingService from "../../../services/BookingService";
+import TicketDataService from "../../../services/TicketDataService";
 import "./Checkout.css";
 
 const schedule = {
@@ -47,16 +52,64 @@ const getDate = (datetime) => {
   );
 };
 
-function Checkout() {
+function Checkout(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-
+  const location = useLocation()
+  const user = AuthService.getCurrentUser()
+  // const {data} = location
+  const seats = location.state.seats
+  const schedule = location.state.schedule
+  console.log(schedule)
   const handleCheckout = () => {
     setName("");
     setEmail("");
     setPhone("");
   };
+ async function onCheckout() {
+    const  booksSe = await BookingService.createBooking(user.id)
+    console.log(booksSe.data.id)
+    let bookingId = booksSe.data.id
+    for(let i = 0;i<seats.length;i++){
+      const ticketSe = await TicketDataService.createTicket(schedule.id)
+            let  ticketId = ticketSe.data.id
+      //     })
+      //     console.log(ticketId)
+  
+      const bookDetailSe = await  BookingDetailService.createBookingDetail(bookingId,ticketId,seats[i].id)
+      console.log(bookDetailSe.data)
+          
+        }
+    //   bookingId = res.data.id
+    //   console.log(bookingId)
+    //   if(bookingId!=null)
+    //   for(let i = 0;i<seats.length;i++){
+    //     let ticketId =null
+    //     TicketDataService.createTicket(schedule.id).then(res=>{
+    //       ticketId = res.data.id
+    //     })
+    //     console.log(ticketId)
+    //     if(ticketId!=null){
+    //       BookingDetailService.createBookingDetail(bookingId,ticketId,seats[i].id)
+    //     }
+        
+    //   }
+    // })
+    // console.log(bookingId)
+    // for(let i = 0;i<seats.length;i++){
+    //   let ticketId =null
+    //   TicketDataService.createTicket(schedule.id).then(res=>{
+    //     ticketId = res.data.id
+    //   })
+    //   console.log(ticketId)
+    //   if(ticketId!=null &&bookingId!=null){
+    //     BookingDetailService.createBookingDetail(bookingId,ticketId,seats[i].id)
+    //   }
+      
+    // }
+    console.log("thanh cong")
+  }
 
   return (
     <div className="checkout">
@@ -71,9 +124,9 @@ function Checkout() {
             </span>
           </div>
           {/* Order */}
-          <OrderSummary />
+          <OrderSummary quantity={seats.length}/>
           {/* Form */}
-          <div className="checkout-form">
+          {/* <div className="checkout-form">
             <div className="checkout-form-heading">Thông tin cá nhân</div>
             <div className="checkout-form-containter">
               <div className="checkout-form-input">
@@ -113,12 +166,12 @@ function Checkout() {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         {/* Sidebar */}
         <div className="checkout-sidebar">
           {/* Schedule */}
-          <div className="checkout-schedule">
+          {/* <div className="checkout-schedule">
             <b>Cinestar Sinh Viên</b>
             <p>{schedule.movie.name}</p>
             <p>
@@ -131,11 +184,11 @@ function Checkout() {
                 <b key={seat.id}>{seat.name} </b>
               ))}
             </p>
-          </div>
+          </div> */}
           {/* Price */}
           <div className="checkout-total-price">
             <div className="checkout-total-price-title">Tổng đơn hàng</div>
-            <div className="checkout-total-price-money">47,500 đ</div>
+            <div className="checkout-total-price-money">{45000*seats.length} đ</div>
           </div>
           {/* Notify */}
           <div className="checkout-notify">
@@ -146,7 +199,7 @@ function Checkout() {
             </p>
           </div>
           {/* Button */}
-          <button className="checkout-button" onClick={handleCheckout}>
+          <button className="checkout-button" onClick={onCheckout}>
             Thanh toán
           </button>
         </div>
