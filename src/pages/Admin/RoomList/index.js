@@ -44,7 +44,7 @@ function RoomList() {
             rooms.map((room) => {
               return (
                 <tr key={room.id}>
-                  <td>{room.id}</td>
+                  <td></td>
                   <td>{room.name}</td>
                   <td>{room.status ? "Trống" : "Đã Đặt"}</td>
                   <td>

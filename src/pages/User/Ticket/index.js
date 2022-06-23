@@ -12,7 +12,6 @@ function Ticket() {
       setCount(bookings.data.length);
     });
   }, []);
-
   return (
     <div class="containt-ticket">
       <main class="ticket-system">

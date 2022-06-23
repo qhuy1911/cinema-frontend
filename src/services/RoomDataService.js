@@ -3,7 +3,6 @@ import http from "./http-common";
 const getAll = () => {
   return http.get("/rooms");
 };
-
 const getRoom = (id) => {
   return http.get(`/rooms/${id}`);
 };
