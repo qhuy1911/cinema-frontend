@@ -4,8 +4,8 @@ import SeatDataService from "../../../services/SeatDataService";
 import "./SeatList.css";
 
 function SeatList() {
-  let { id } = useParams();
-  // const id = 1;
+  // let { id } = useParams();
+  const id = 1;
   const [seats, setSeats] = useState(null);
 
   useEffect(() => {
