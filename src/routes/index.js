@@ -17,6 +17,7 @@ import Register from "../pages/Register";
 import NewRoom from "../pages/Admin/RoomList/NewRoom";
 import NewSeat from "../pages/Admin/SeatList/NewSeat";
 import EditRoom from "../pages/Admin/RoomList/EditRoom";
+import AdminMoviesList from "../components/AdminMoviesList";
 
 const publicRoutes = [
   //User
@@ -34,6 +35,7 @@ const publicRoutes = [
 
 const privateRoutes = [
   { path: "/admin/movies", component: MoviesList, layout: AdminLayout },
+  { path: "/admin/movies/post", component: AdminMoviesList },
   { path: "/admin/schedule", component: ScheduleList, layout: AdminLayout },
   { path: "/admin/rooms", component: RoomList, layout: AdminLayout },
   { path: "/admin/seats", component: SeatList, layout: AdminLayout },

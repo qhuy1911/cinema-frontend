@@ -1,0 +1,50 @@
+.list-movie {
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 50px;
+
+}
+
+.form-group-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.form-group-container .form-group {
+    width: 50%;
+    margin-right: 50px;
+}
+
+.form-group-container .form-group:nth-child(2) {
+    width: 50%;
+    margin-right: 0px;
+}
+
+.list-movie .form-image {
+    height: 150px;
+}
+
+.list-movie .form-image label {
+    display: block;
+}
+
+.list-movie .form-image img {
+    display: inline;
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+    height: 150px;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 9px;
+    color: white;
+    background: #12263f;
+    letter-spacing: 1px;
+    cursor: pointer;
+    align-items: center;
+    margin: 20px 0px;
+    display: flex;
+}
