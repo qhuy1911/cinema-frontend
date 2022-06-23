@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import "./ScheduleList.css";
 
@@ -19,8 +20,7 @@ function ScheduleList() {
   }, [schedules]);
   //delete
   const deleteSchedule = (id) => {
-    ScheduleDataService.getDeleteScheduleById(id).then(() => {
-    });
+    ScheduleDataService.getDeleteScheduleById(id).then(() => {});
   };
   return (
     <div className="movie-list-wrapper">
@@ -35,6 +35,7 @@ function ScheduleList() {
             <th>DateTime</th>
             <th>Movie</th>
             <th>Room</th>
+            <th>Seat List</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -46,6 +47,9 @@ function ScheduleList() {
                 <td>{t.datetime}</td>
                 <td>{t.movie.name}</td>
                 <td>{t.room.name}</td>
+                <td>
+                  <Link to={`/admin/schedule/${t.id}/seats`}>Xem</Link>
+                </td>
                 <td>
                   <FontAwesomeIcon
                     onClick={() => deleteSchedule(t.id)}

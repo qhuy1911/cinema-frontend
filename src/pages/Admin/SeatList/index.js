@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import SeatDataService from "../../../services/SeatDataService";
 import "./SeatList.css";
 
 function SeatList() {
-  // let { id } = useParams();
-  const id = 1;
+  let { id } = useParams();
+
   const [seats, setSeats] = useState(null);
 
   useEffect(() => {
@@ -23,9 +23,6 @@ function SeatList() {
   return (
     <div className="movie-list-wrapper">
       <h2>Seat List</h2>
-      <Link className="btn-add" to={"/admin/seats/add"}>
-        Create New Seat
-      </Link>
       <div className="showcase">
         <span className="div" />
         Đã đặt
@@ -54,6 +51,9 @@ function SeatList() {
           )}
         </div>
       </div>
+      <Link className="btn-add" to={"/admin/schedule"}>
+        Quay lại
+      </Link>
     </div>
   );
 }
