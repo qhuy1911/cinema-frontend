@@ -16,9 +16,6 @@ function AdminNavbar() {
             <Link to={"/admin/rooms"}>Rooms</Link>
           </li>
           <li>
-            <Link to={"/admin/seats"}>Seats</Link>
-          </li>
-          <li>
             <Link to={"/admin/bookings"}>Bookings</Link>
           </li>
         </ul>
