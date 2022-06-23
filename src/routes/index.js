@@ -14,6 +14,7 @@ import BookingList from "../pages/Admin/BookingList";
 
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import AdminMoviesList from "../components/AdminMoviesList";
 
 const publicRoutes = [
   //User
@@ -31,6 +32,7 @@ const publicRoutes = [
 
 const privateRoutes = [
   { path: "/admin/movies", component: MoviesList, layout: AdminLayout },
+  { path: "/admin/movies/post", component: AdminMoviesList },
   { path: "/admin/schedule", component: ScheduleList, layout: AdminLayout },
   { path: "/admin/rooms", component: RoomList, layout: AdminLayout },
   { path: "/admin/seats", component: SeatList, layout: AdminLayout },
