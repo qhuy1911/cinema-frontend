@@ -56,10 +56,12 @@ function NewSeat() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <button className="btn-add btn-form-room">Create</button>
-            <Link to={"/admin/seats "}>
-              <button className="btn-add btn-form-room">Cancel</button>
-            </Link>
+            <div className="block-btn">
+              <button className="btn-add btn-form-room">Create</button>
+              <Link to={"/admin/seats "} className="navLink">
+                <button className="btn-add btn-form-room">Cancel</button>
+              </Link>
+            </div>
           </Form>
         </div>
       </div>

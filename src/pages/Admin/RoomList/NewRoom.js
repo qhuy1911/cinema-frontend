@@ -54,10 +54,12 @@ function NewRoom() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <button className="btn-add btn-form-room">Create</button>
-            <Link to={"/admin/rooms"}>
-              <button className="btn-add btn-form-room">Cancel</button>
-            </Link>
+            <div className="block-btn">
+              <button className="btn-add btn-form-room">Create</button>
+              <Link to={"/admin/rooms"} className="navLink">
+                <button className="btn-add btn-form-room">Cancel</button>
+              </Link>
+            </div>
           </Form>
         </div>
       </div>

@@ -5,9 +5,15 @@
 .form-room{
     width: 600px;
 }
+.block-btn{
+    display: flex;
+}
 .btn-form-room{
     margin-top: 10px ;
     margin-right: 10px;
+}
+.btn-form-add:hover{
+    text-decoration: none;
 }
 .delete-action{
     cursor: pointer;
