@@ -276,11 +276,18 @@
 
 .Seat-infor .Seat-infor-bottom-button {
     width: 100%;
+    font-weight: 500;
     border: none;
     border-radius: 10px;
     padding: 9px;
     color: white;
-    background: #647182;
+    background: #12263f;
     letter-spacing: 1px;
     cursor: pointer;
+}
+
+.Seat-infor .Seat-infor-bottom-button:disabled {
+    background-color: #ccc;
+    color: #12263f;
+    cursor: default;
 }
