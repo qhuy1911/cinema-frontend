@@ -6,7 +6,7 @@ import SeatDataService from "../../../services/SeatDataService";
 function NewSeat() {
   let { id } = useParams();
   // const id = 1;
-  const [name, setName] = useState(null);
+  const [name, setName] = useState("");
   const [validated, setValidated] = useState(false);
 
   let navigate = useNavigate();

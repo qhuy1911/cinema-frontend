@@ -5,7 +5,7 @@ import "./RoomList.css";
 import RoomDataService from "../../../services/RoomDataService";
 
 function NewRoom() {
-  const [name, setName] = useState(null);
+  const [name, setName] = useState("");
 
   const [validated, setValidated] = useState(false);
 
