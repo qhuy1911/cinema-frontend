@@ -1,22 +1,27 @@
 import http from "./http-common";
 
-
 //seatController/@GetMapping("/schedules/{scheduleId}/seats")
 const getSeatByScheduleId = (scheduleId) => {
-    return http.get(`/schedules/${scheduleId}/seats`)
-}
+  return http.get(`/schedules/${scheduleId}/seats`);
+};
 //scheduleController/@GetMapping("/schedules/{id}")
 const getScheduleById = (id) => {
-    return http.get(`/schedules/${id}`)
-}
+  return http.get(`/schedules/${id}`);
+};
 //seatContronller/@GetMapping("/seats/{id}")
 const getSeatById = (id) => {
-    return http.get(`/seats/${id}`)
-}
-const SeatDataService = {
-    getSeatByScheduleId,
-    getScheduleById,
-    getSeatById
+  return http.get(`/seats/${id}`);
+};
+//seatContronller/@PostMapping("/schedules/{schedulesId}/seats")
+const createSeatByScheduleId = (scheduleId, data) => {
+  return http.post(`/schedules/${scheduleId}/seats`, data);
 };
 
-export default SeatDataService
+const SeatDataService = {
+  getSeatByScheduleId,
+  getScheduleById,
+  getSeatById,
+  createSeatByScheduleId,
+};
+
+export default SeatDataService;
