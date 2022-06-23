@@ -4,8 +4,8 @@ import { Form } from "react-bootstrap";
 import SeatDataService from "../../../services/SeatDataService";
 
 function NewSeat() {
-  let { id } = useParams();
-  // const id = 1;
+  // let { id } = useParams();
+  const id = 1;
   const [name, setName] = useState("");
   const [validated, setValidated] = useState(false);
 
