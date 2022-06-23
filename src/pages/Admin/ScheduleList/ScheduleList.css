@@ -1,0 +1,12 @@
+Table {
+    counter-reset: rowNumber -1;
+}
+Table tr {
+    counter-increment: rowNumber;
+}
+
+Table tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+}

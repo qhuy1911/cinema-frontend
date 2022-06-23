@@ -1,45 +1,68 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import MovieDataService from "../../../services/MovieDataService";
 import "./MovieList.css";
 
 function MoviesList() {
+  const [movies, setMoives] = useState([])
+
+  useEffect(() => {
+    getAllMovies();
+  }, [movies])
+  const getAllMovies = () => {
+    MovieDataService.getAll().then((movie) => {
+      setMoives(movie.data)
+    })
+  }
+  const handleDelete = (id) => {
+    MovieDataService.deleteMovie(id)
+      .then((res) => {
+        console.log(id);
+        getAllMovies();
+      })
+  }
+
+
   return (
     <div className="movie-list-wrapper">
       <h2>Movie List</h2>
-      <Link className="btn-add" to={"/"}>
+      <Link className="btn-add" to={"/admin/movies/post"}>
         Create New Movie
       </Link>
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-            <th>Action</th>
+            <th>Name</th>
+            <th>Director</th>
+            <th>Description</th>
+            <th>Duration</th>
+            <th>Image</th>
+            <th>Start-date</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-              <FontAwesomeIcon icon={faTrash} />
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>
-              <FontAwesomeIcon icon={faTrash} />
-            </td>
-          </tr>
+          {movies.map(movi => {
+            return (
+              <tr key={movi.id}>
+                <td>{movi.id}</td>
+                <td>{movi.name}</td>
+                <td>{movi.director}</td>
+                <td >{movi.description}</td>
+                <td>{movi.duration}</td>
+                <td>{movi.image}</td>
+                <td>{movi.startDate}</td>
+                <td>
+                  <FontAwesomeIcon icon={faTrash} onClick={() => handleDelete(movi.id)}
+                  />
+                </td>
+              </tr>
+            )
+          })}
         </tbody>
       </Table>
     </div>
