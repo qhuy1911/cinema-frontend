@@ -4,6 +4,8 @@ import { Button, Modal } from "react-bootstrap";
 import ScheduleDataService from "../../../services/ScheduleDataService";
 import MovieDataService from "../../../services/MovieDataService";
 import RoomDataService from "../../../services/RoomDataService.js";
+import SeatDataService from "../../../services/SeatDataService";
+
 function AddSchedule() {
   const [movies, setMovies] = useState([]);
   const [rooms, setRooms] = useState([]);
@@ -31,15 +33,29 @@ function AddSchedule() {
   const [movie, setMovie] = useState("");
   const [room, setRoom] = useState("");
 
-  const handleSubmit = () => {
+  async function handleSubmit() {
     const schedule = {
       datetime,
     };
-    ScheduleDataService.getPostSchedule(movie, room, schedule).then(() => {  
-    });  
+    const scheduleSe = await ScheduleDataService.getPostSchedule(
+      movie,
+      room,
+      schedule
+    );
+    const rows = ["A", "B", "C", "D", "E"];
+    const cols = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"];
+    let scheduleId = scheduleSe.data.id;
+    for (let i = 0; i < rows.length; i++) {
+      for (let j = 0; j < cols.length; j++) {
+        await SeatDataService.createSeatByScheduleId(scheduleId, {
+          name: rows[i] + cols[j],
+          status: true,
+        });
+      }
+    }
     handleClose();
-  };
-  
+  }
+
   return (
     <>
       <Button className="btn-add" variant="primary" onClick={handleShow}>

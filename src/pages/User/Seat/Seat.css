@@ -79,12 +79,10 @@
 .cinema .cinema-seats {
     display: grid;
     grid-gap: 7px;
-    grid-template-columns: repeat(16, min-content);
+    grid-template-columns: repeat(10, min-content);
     align-items: center;
     justify-content: center;
     width: 100%;
-
-
 }
 
 .cinema .cinema-seats .seat:nth-of-type(8n + 2) {
