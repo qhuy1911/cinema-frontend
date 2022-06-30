@@ -56,7 +56,7 @@ function BookingList() {
 
                 <td>
                   {bookingDetails.map((t, key) => {
-                    let idSeat = t.seat.id;
+                    let idSeat = t.seat.name;
                     counts = 0;
                     return (
                       t.booking.id === booking.id && (

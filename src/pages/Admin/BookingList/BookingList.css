@@ -4,3 +4,71 @@
     justify-content: space-between;
     gap: 8px;
   }
+
+  
+.booking-list-wrapper td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 10px;
+  font-size: 14px;
+}
+
+.booking-list-wrapper th {
+  text-align: center;
+}
+
+.booking-list-wrapper table thead tr th:first-child {
+  width: 5%;
+}
+
+.booking-list-wrapper thead tr th:nth-child(2) {
+  width: 25%;
+}
+
+.booking-list-wrapper thead tr th:nth-child(3) {
+  width: 25%;
+}
+
+.booking-list-wrapper thead tr th:nth-child(4) {
+  width: 15%;
+}
+
+.booking-list-wrapper thead tr th:nth-child(5) {
+  width: 0%;
+}
+
+.booking-list-wrapper thead tr th:last-child {
+  width: 5%;
+}
+
+
+
+.booking-list-wrapper tbody tr td:first-child {
+  width: 5%;
+  text-align: center;
+}
+
+.booking-list-wrapper tbody tr td:nth-child(2) {
+  width: 25%;
+}
+
+.booking-list-wrapper tbody tr td:nth-child(3) {
+  width: 25%;
+}
+
+.booking-list-wrapper tbody tr td:nth-child(4) {
+  width: 15%;
+}
+
+.booking-list-wrapper tbody tr td:nth-child(5) {
+  width: 0%;
+}
+
+
+.booking-list-wrapper tbody tr td:last-child {
+  width: 5%;
+  color: #12263f;
+  text-align: center;
+  cursor: pointer;
+}
