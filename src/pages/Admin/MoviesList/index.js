@@ -12,7 +12,7 @@ function MoviesList() {
   useEffect(() => {
     getAllMovies();
 
-  }, [movies])
+  }, [])
   const getAllMovies = () => {
     MovieDataService.getAll().then((movie) => {
       setMoives(movie.data)

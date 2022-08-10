@@ -48,14 +48,14 @@ function BookingList() {
           </tr>
         </thead>
         <tbody>
-          {bookings.map((booking) => {
+          { bookings.map((booking) => {
             return (
               <tr>
                 <td>{booking.id}</td>
                 <td>{booking.user.username}</td>
 
                 <td>
-                  {bookingDetails.map((t, key) => {
+                  {bookingDetails && bookingDetails.map((t, key) => {
                     let idSeat = t.seat.name;
                     counts = 0;
                     return (
@@ -68,7 +68,7 @@ function BookingList() {
                   })}
                 </td>
                 <td>
-                  {bookingDetails.map((t) => {
+                  {bookingDetails && bookingDetails.map((t) => {
                     t.booking.id === booking.id && counts++;
                   })}
                   {counts * 75000}
