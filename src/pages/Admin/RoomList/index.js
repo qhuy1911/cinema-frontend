@@ -11,7 +11,7 @@ function RoomList() {
 
   useEffect(() => {
     getAllRoom();
-  });
+  },[]);
 
   const getAllRoom = () => {
     RoomDataService.getAll().then((res) => setRooms(res.data));

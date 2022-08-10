@@ -17,7 +17,7 @@ function ScheduleList() {
     ScheduleDataService.getAll().then((item) => {
       setSchedules(item.data);
     });
-  }, [schedules]);
+  }, []);
   //delete
   const deleteSchedule = (id) => {
     ScheduleDataService.getDeleteScheduleById(id).then(() => {});
