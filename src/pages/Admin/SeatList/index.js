@@ -8,7 +8,8 @@ function SeatList() {
   let { id } = useParams();
 
   const [seats, setSeats] = useState(null);
-
+  let seatBookings = 0;
+  let seatNull = 0;
   useEffect(() => {
     if (id) {
       getSeatByScheduleId(id);
@@ -24,9 +25,25 @@ function SeatList() {
     <div className="movie-list-wrapper">
       <h2>Seat List</h2>
       <div className="showcase">
+      {seats ? (
+            seats.map((countSeat) => {
+              if (countSeat.status) {
+              
+                seatNull++
+                ;
+              } else {
+                seatBookings++;
+              }
+            })
+          ) : (
+            <div className="empty-table"></div>
+          )}
         <span className="div" />
-        Đã đặt
+        Đã đặt&ensp;{seatBookings}
+        <span className="seatNull" />
+        Chưa đặt&ensp;{seatNull}
       </div>
+      
       <div className="cinema">
         <div className="cinema-screen"> Màn hình</div>
         <div className="cinema-seats">
