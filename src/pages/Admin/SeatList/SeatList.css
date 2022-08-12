@@ -11,3 +11,11 @@
 .seat-list.disable{
     background-color: #DFDFDF;
 }
+.seatNull{
+    height: 30px;
+    width: 30px;
+    margin: 0 12px;
+    border-color: #DFDFDF;
+    border-style: solid;
+    border-radius: 3px;
+}

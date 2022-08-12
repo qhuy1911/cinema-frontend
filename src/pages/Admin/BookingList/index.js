@@ -3,7 +3,6 @@ import BookingService from "../../../services/BookingService";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import "./BookingList.css";
 import BookingDetailService from "../../../services/BookingDetailService";
 
@@ -11,9 +10,6 @@ function BookingList() {
   const [bookings, setBookings] = useState([]);
   const [bookingDetails, setBookingDetail] = useState([]);
   const [id, setId] = useState();
-
-  const [count, setCount] = useState(0);
-
   const bk = [
     {
       id,
@@ -30,7 +26,6 @@ function BookingList() {
   useEffect(() => {
     BookingDetailService.getAll().then((booking) => {
       setBookingDetail(booking.data);
-      // setCount(booking.data.booking.);
     });
   }, []);
   let counts = 0;
@@ -51,7 +46,7 @@ function BookingList() {
           { bookings.map((booking) => {
             return (
               <tr>
-                <td>{booking.id}</td>
+                <td></td>
                 <td>{booking.user.username}</td>
 
                 <td>
