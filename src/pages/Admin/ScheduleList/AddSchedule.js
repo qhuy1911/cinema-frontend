@@ -1,17 +1,22 @@
-import { useEffect, useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import {useEffect, useState} from "react";
+import {Button, Modal} from "react-bootstrap";
 
 import ScheduleDataService from "../../../services/ScheduleDataService";
 import MovieDataService from "../../../services/MovieDataService";
 import RoomDataService from "../../../services/RoomDataService.js";
 import SeatDataService from "../../../services/SeatDataService";
+import TheaterServices from "../../../services/TheaterServices";
+import {useNavigate} from "react-router-dom";
 
 function AddSchedule() {
+  let navigate = useNavigate();
   const [movies, setMovies] = useState([]);
   const [rooms, setRooms] = useState([]);
+  const [theaters, setTheaters] = useState([]);
   useEffect(() => {
     getAllMovies();
     getAllRooms();
+    getAllTheater();
   }, []);
   const getAllMovies = () => {
     MovieDataService.getAll().then((item) => {
@@ -23,6 +28,11 @@ function AddSchedule() {
       setRooms(item.data);
     });
   };
+  const getAllTheater = () => {
+    TheaterServices.getAll().then((res) => {
+      setTheaters(res.data);
+    });
+  };
   //Modal
   const [show, setShow] = useState(false);
 
@@ -32,6 +42,7 @@ function AddSchedule() {
   const [datetime, setDatetime] = useState("");
   const [movie, setMovie] = useState("");
   const [room, setRoom] = useState("");
+  const [theater, setTheater] = useState("");
 
   async function handleSubmit() {
     const schedule = {
@@ -40,6 +51,7 @@ function AddSchedule() {
     const scheduleSe = await ScheduleDataService.getPostSchedule(
       movie,
       room,
+      theater,
       schedule
     );
     const rows = ["A", "B", "C", "D", "E"];
@@ -54,6 +66,7 @@ function AddSchedule() {
       }
     }
     handleClose();
+    navigate("/admin/theaters");
   }
 
   return (
@@ -107,6 +120,19 @@ function AddSchedule() {
                 >
                   <option>Chọn phòng</option>
                   {rooms.map((t) => {
+                    return <option value={t.id}>{t.name}</option>;
+                  })}
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Rạp</label>
+                <select
+                  class="form-control"
+                  value={theater}
+                  onChange={(e) => setTheater(e.target.value)}
+                >
+                  <option>Chọn rạp</option>
+                  {theaters.map((t) => {
                     return <option value={t.id}>{t.name}</option>;
                   })}
                 </select>
