@@ -1,11 +1,12 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {Link, useParams} from "react-router-dom";
 import SeatDataService from "../../../services/SeatDataService";
 import "./SeatList.css";
 
 function SeatList() {
-  let { id } = useParams();
+  let {id} = useParams();
 
   const [seats, setSeats] = useState(null);
   let seatBookings = 0;
@@ -25,25 +26,23 @@ function SeatList() {
     <div className="movie-list-wrapper">
       <h2>Seat List</h2>
       <div className="showcase">
-      {seats ? (
-            seats.map((countSeat) => {
-              if (countSeat.status) {
-              
-                seatNull++
-                ;
-              } else {
-                seatBookings++;
-              }
-            })
-          ) : (
-            <div className="empty-table"></div>
-          )}
+        {seats ? (
+          seats.map((countSeat) => {
+            if (countSeat.status) {
+              seatNull++;
+            } else {
+              seatBookings++;
+            }
+          })
+        ) : (
+          <div className="empty-table"></div>
+        )}
         <span className="div" />
         Đã đặt&ensp;{seatBookings}
         <span className="seatNull" />
         Chưa đặt&ensp;{seatNull}
       </div>
-      
+
       <div className="cinema">
         <div className="cinema-screen"> Màn hình</div>
         <div className="cinema-seats">

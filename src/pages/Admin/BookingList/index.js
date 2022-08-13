@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+/* eslint-disable array-callback-return */
+import {useEffect, useState} from "react";
 import BookingService from "../../../services/BookingService";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Table } from "react-bootstrap";
+import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Table} from "react-bootstrap";
 import "./BookingList.css";
 import BookingDetailService from "../../../services/BookingDetailService";
 
@@ -43,29 +44,31 @@ function BookingList() {
           </tr>
         </thead>
         <tbody>
-          { bookings.map((booking) => {
+          {bookings.map((booking) => {
             return (
               <tr>
                 <td></td>
                 <td>{booking.user.username}</td>
 
                 <td>
-                  {bookingDetails && bookingDetails.map((t, key) => {
-                    let idSeat = t.seat.name;
-                    counts = 0;
-                    return (
-                      t.booking.id === booking.id && (
-                        <span key={key}>
-                          {idSeat} <span>&nbsp;</span>
-                        </span>
-                      )
-                    );
-                  })}
+                  {bookingDetails &&
+                    bookingDetails.map((t, key) => {
+                      let idSeat = t.seat.name;
+                      counts = 0;
+                      return (
+                        t.booking.id === booking.id && (
+                          <span key={key}>
+                            {idSeat} <span>&nbsp;</span>
+                          </span>
+                        )
+                      );
+                    })}
                 </td>
                 <td>
-                  {bookingDetails && bookingDetails.map((t) => {
-                    t.booking.id === booking.id && counts++;
-                  })}
+                  {bookingDetails &&
+                    bookingDetails.map((t) => {
+                      t.booking.id === booking.id && counts++;
+                    })}
                   {counts * 75000}
                 </td>
                 <td>
