@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
-import { Table } from "react-bootstrap";
+import {useEffect, useState} from "react";
+import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Link} from "react-router-dom";
+import {Table} from "react-bootstrap";
 import "./ScheduleList.css";
 
 import AddSchedule from "./AddSchedule";
@@ -40,25 +40,26 @@ function ScheduleList() {
           </tr>
         </thead>
         <tbody>
-          {schedules.map((t) => {
-            return (
-              <tr key={t.id}>
-                <td></td>
-                <td>{t.datetime}</td>
-                <td>{t.movie.name}</td>
-                <td>{t.room.name}</td>
-                <td>
-                  <Link to={`/admin/schedule/${t.id}/seats`}>Xem</Link>
-                </td>
-                <td>
-                  <FontAwesomeIcon
-                    onClick={() => deleteSchedule(t.id)}
-                    icon={faTrash}
-                  />
-                </td>
-              </tr>
-            );
-          })}
+          {schedules &&
+            schedules.map((t) => {
+              return (
+                <tr key={t.id}>
+                  <td></td>
+                  <td>{t.datetime}</td>
+                  <td>{t.movie.name}</td>
+                  <td>{t.room.name}</td>
+                  <td>
+                    <Link to={`/admin/schedule/${t.id}/seats`}>Xem</Link>
+                  </td>
+                  <td>
+                    <FontAwesomeIcon
+                      onClick={() => deleteSchedule(t.id)}
+                      icon={faTrash}
+                    />
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </Table>
     </div>

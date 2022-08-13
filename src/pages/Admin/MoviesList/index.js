@@ -1,32 +1,27 @@
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useEffect, useState} from "react";
+import {Table} from "react-bootstrap";
+import {Link} from "react-router-dom";
 import MovieDataService from "../../../services/MovieDataService";
 import "./MovieList.css";
 
 function MoviesList() {
-  const [movies, setMoives] = useState([])
+  const [movies, setMoives] = useState([]);
 
   useEffect(() => {
     getAllMovies();
-
-  }, [])
+  }, []);
   const getAllMovies = () => {
     MovieDataService.getAll().then((movie) => {
-      setMoives(movie.data)
-
-    })
-  }
+      setMoives(movie.data);
+    });
+  };
   const handleDelete = (id) => {
-    MovieDataService.deleteMovie(id)
-      .then((res) => {
-        getAllMovies();
-
-      })
-  }
-
+    MovieDataService.deleteMovie(id).then((res) => {
+      getAllMovies();
+    });
+  };
 
   return (
     <div className="movie-list-wrapper">
@@ -42,31 +37,33 @@ function MoviesList() {
             <th>Director</th>
             <th>Description</th>
             <th>Duration</th>
-            <th>Image</th>
-            <th>Start-date</th>
+            <th>Start date</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          {movies.map(movi => {
-            return (
-              <tr key={movi.id}>
-                <td>{movi.id}</td>
-                <td>{movi.name}</td>
-                <td>{movi.director}</td>
-                <td>{movi.description}</td>
-                <td>{movi.duration}</td>
-                <td>{movi.image}</td>
-                <td>{movi.startDate}</td>
-                <td>
-                  <FontAwesomeIcon icon={faTrash} onClick={() => handleDelete(movi.id)}
-                  />
-                </td>
-
-              </tr>
-
-            )
-          })}
+          {movies &&
+            movies.map((movi) => {
+              return (
+                <tr key={movi.id}>
+                  <td></td>
+                  <td>{movi.name}</td>
+                  <td>{movi.director}</td>
+                  <td>{movi.description}</td>
+                  <td>{movi.duration}</td>
+                  <td>{movi.startDate}</td>
+                  <td>
+                    <img src={movi.image} alt="avt" />
+                  </td>
+                  <td>
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      onClick={() => handleDelete(movi.id)}
+                    />
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </Table>
     </div>
