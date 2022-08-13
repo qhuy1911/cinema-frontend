@@ -19,6 +19,7 @@ import EditRoom from "../pages/Admin/RoomList/EditRoom";
 import AdminMoviesList from "../components/AdminMoviesList";
 import TheaterList from "../pages/Admin/TheaterList";
 import AddTheater from "../pages/Admin/TheaterList/AddTheater";
+import UserList from "../pages/Admin/UserList";
 
 const publicRoutes = [
   //User
@@ -46,6 +47,7 @@ const privateRoutes = [
 
   {path: "/admin/rooms/add", component: NewRoom, layout: AdminLayout},
   {path: "/admin/rooms/:id", component: EditRoom, layout: AdminLayout},
+  {path: "/admin/users", component:UserList, layout: AdminLayout}
 ];
 
 export {publicRoutes, privateRoutes};
