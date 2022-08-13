@@ -12,8 +12,11 @@ const getSchedule = (id) => {
 const getDeleteScheduleById = (id) => {
   return http.delete(`/schedules/${id}`);
 };
-const getPostSchedule = (idMovie, idRoom, data) => {
-  return http.post(`/movies/${idMovie}/rooms/${idRoom}/schedules`, data);
+const getPostSchedule = (movieId, roomId, theatersId, data) => {
+  return http.post(
+    `/movies/${movieId}/rooms/${roomId}/theaters/${theatersId}/schedules`,
+    data
+  );
 };
 
 const ScheduleDataService = {
