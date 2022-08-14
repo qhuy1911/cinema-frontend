@@ -29,3 +29,18 @@
 .icon-globe{
     margin-left: 0;
 }
+.form-select{
+    margin-left: 150px;
+    color: #7e8a9c!important;
+    background-color: #edf2f9;
+    width: 30%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border-color: #7e8a9c;
+    font-weight: bold;
+}
+.form-select option {
+	font-weight:normal;
+    font-size: 15px;
+}

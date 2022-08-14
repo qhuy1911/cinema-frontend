@@ -7,6 +7,7 @@ import MovieCard from "../../../components/MovieCard";
 import ScheduleHome from "../../../components/SchedulesHome";
 import AuthService from "../../../services/AuthService";
 import "./Home.css";
+import SelectTheater from "./SelectTheater.js";
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -48,6 +49,11 @@ function Home() {
   };
   return (
     <div>
+      <form>
+        <div className="flex flex-col gap-5">
+          <SelectTheater></SelectTheater>
+        </div>
+      </form>
       <ScheduleHome onScheduleSelect={onScheduleSelect} />
       <div className="home-container">
         <div className="description">
