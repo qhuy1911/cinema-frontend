@@ -14,6 +14,8 @@ function Home() {
   let navigate = useNavigate();
 
   const [dates, setDates] = useState([]);
+  const [theaterId,setTheaterId] = useState(1);
+  console.log(theaterId)
 
   useEffect(() => {
     const currentUser = AuthService.getCurrentUser();
@@ -51,10 +53,10 @@ function Home() {
     <div>
       <form>
         <div className="flex flex-col gap-5">
-          <SelectTheater></SelectTheater>
+          <SelectTheater  setTheaterId={setTheaterId}></SelectTheater>
         </div>
       </form>
-      <ScheduleHome onScheduleSelect={onScheduleSelect} />
+      <ScheduleHome id={theaterId} onScheduleSelect={onScheduleSelect} />
       <div className="home-container">
         <div className="description">
           <FontAwesomeIcon icon={faCircleInfo} className="home-info-icon" />
