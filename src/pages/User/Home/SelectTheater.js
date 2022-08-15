@@ -3,7 +3,7 @@ import { useEffect, useState} from "react";
 import "./Home.css";
 import TheaterServices from "../../../services/TheaterServices";
 
-function SelectTheater() {
+function SelectTheater({setTheaterId}) {
   const [theaters, setTheaters] = useState();
 
   useEffect(() => {
@@ -18,10 +18,12 @@ function SelectTheater() {
 
   return (
     <div>
-      <select className="form-select">
+      <select className="form-select" onChange={(e)=>{
+        setTheaterId(e.target.value)
+      }}>
           {theaters &&
             theaters.map((theater) => (
-              <option key={theater.id} value="{theater.name}">{theater.name}</option>
+              <option key={theater.id} value={`${theater.id}`}>{theater.name}</option>
             ))}
         </select>
     </div>

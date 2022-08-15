@@ -18,6 +18,9 @@ const getPostSchedule = (movieId, roomId, theatersId, data) => {
     data
   );
 };
+const getAllByTheatersId = (id)=>{
+  return http.get(`/theaters/${id}/schedules`)
+}
 
 const ScheduleDataService = {
   getAll,
@@ -25,6 +28,7 @@ const ScheduleDataService = {
   getAllByMovieId,
   getDeleteScheduleById,
   getPostSchedule,
+  getAllByTheatersId
 };
 
 export default ScheduleDataService;
