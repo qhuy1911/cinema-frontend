@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./AdminNavbar.css";
 
 function AdminNavbar() {
@@ -23,6 +23,9 @@ function AdminNavbar() {
           </li>
           <li>
             <Link to={"/admin/bookings"}>Bookings</Link>
+          </li>
+          <li>
+            <Link to={"/admin/users"}>Users</Link>
           </li>
         </ul>
       </div>

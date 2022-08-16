@@ -18,13 +18,14 @@ function ScheduleHome(props) {
   const weekday = ["CN", "Th 2", "Th 3", "Th 4", "Th 5", "Th 6", "Th 7"];
 
   useEffect(() => {
-    getAllSchedule();
-  }, []);
+    getAllByTheatersIdAction(props.id);
+  }, [props.id]);
   useEffect(() => {
     handleShowMovies(0, dates[0]);
   }, [schedules]);
-  const getAllSchedule = () => {
-    ScheduleDataService.getAll()
+  const getAllByTheatersIdAction = (id) => {
+    if(id!==0)
+    ScheduleDataService.getAllByTheatersId(id)
       .then((res) => {
         setSchedules(res.data);
       })
@@ -47,7 +48,8 @@ function ScheduleHome(props) {
     }
     props.onScheduleSelect(movies, dateSelect);
   };
-
+  console.log(props.id)
+  console.log('Schedule Page',schedules)
   return (
     <div className="home-container">
       <div className="home-schedules">

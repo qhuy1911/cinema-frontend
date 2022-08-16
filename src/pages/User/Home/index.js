@@ -7,12 +7,15 @@ import MovieCard from "../../../components/MovieCard";
 import ScheduleHome from "../../../components/SchedulesHome";
 import AuthService from "../../../services/AuthService";
 import "./Home.css";
+import SelectTheater from "./SelectTheater.js";
 
 function Home() {
   const [movies, setMovies] = useState([]);
   let navigate = useNavigate();
 
   const [dates, setDates] = useState([]);
+  const [theaterId,setTheaterId] = useState(1);
+  console.log(theaterId)
 
   useEffect(() => {
     const currentUser = AuthService.getCurrentUser();
@@ -48,7 +51,12 @@ function Home() {
   };
   return (
     <div>
-      <ScheduleHome onScheduleSelect={onScheduleSelect} />
+      <form>
+        <div className="flex flex-col gap-5">
+          <SelectTheater  setTheaterId={setTheaterId}></SelectTheater>
+        </div>
+      </form>
+      <ScheduleHome id={theaterId} onScheduleSelect={onScheduleSelect} />
       <div className="home-container">
         <div className="description">
           <FontAwesomeIcon icon={faCircleInfo} className="home-info-icon" />
