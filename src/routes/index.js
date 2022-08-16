@@ -20,6 +20,10 @@ import AdminMoviesList from "../components/AdminMoviesList";
 import TheaterList from "../pages/Admin/TheaterList";
 import AddTheater from "../pages/Admin/TheaterList/AddTheater";
 
+import Dashboard from "../pages/Admin/Dashboard";
+import Tickets from "../pages/Admin/Dashboard/Tickets";
+import UserList from "../pages/Admin/UserList";
+
 const publicRoutes = [
   //User
   {path: "/", component: Home},
