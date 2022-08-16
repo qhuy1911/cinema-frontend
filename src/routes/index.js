@@ -19,7 +19,6 @@ import EditRoom from "../pages/Admin/RoomList/EditRoom";
 import AdminMoviesList from "../components/AdminMoviesList";
 import TheaterList from "../pages/Admin/TheaterList";
 import AddTheater from "../pages/Admin/TheaterList/AddTheater";
-import UserList from "../pages/Admin/UserList";
 
 const publicRoutes = [
   //User
@@ -36,8 +35,10 @@ const publicRoutes = [
 ];
 
 const privateRoutes = [
+  {path: "/admin", component: Dashboard, layout: AdminLayout},
+  {path: "/admin/recent", component: Tickets, layout: AdminLayout},
   {path: "/admin/movies", component: MoviesList, layout: AdminLayout},
-  {path: "/admin/movies/post", component: AdminMoviesList},
+  {path: "/admin/movies/post", component: AdminMoviesList, layout: AdminLayout},
   {path: "/admin/schedule", component: ScheduleList, layout: AdminLayout},
   {path: "/admin/rooms", component: RoomList, layout: AdminLayout},
   {path: "/admin/schedule/:id/seats", component: SeatList, layout: AdminLayout},
@@ -47,7 +48,7 @@ const privateRoutes = [
 
   {path: "/admin/rooms/add", component: NewRoom, layout: AdminLayout},
   {path: "/admin/rooms/:id", component: EditRoom, layout: AdminLayout},
-  {path: "/admin/users", component:UserList, layout: AdminLayout}
+  {path: "/admin/users", component: UserList, layout: AdminLayout},
 ];
 
 export {publicRoutes, privateRoutes};

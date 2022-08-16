@@ -1,7 +1,7 @@
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import AuthService from "../../services/AuthService";
 import "./AdminHeader.css";
 
@@ -11,7 +11,7 @@ function AdminHeader() {
 
   const handleLogout = () => {
     AuthService.logout();
-    navigate("/login");
+    navigate("/");
   };
 
   return (

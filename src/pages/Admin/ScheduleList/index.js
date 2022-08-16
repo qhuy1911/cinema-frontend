@@ -20,7 +20,11 @@ function ScheduleList() {
   }, []);
   //delete
   const deleteSchedule = (id) => {
-    ScheduleDataService.getDeleteScheduleById(id).then(() => {});
+    ScheduleDataService.getDeleteScheduleById(id).then(() => {
+      ScheduleDataService.getAll().then((item) => {
+        setSchedules(item.data);
+      });
+    });
   };
   return (
     <div className="movie-list-wrapper">
@@ -35,6 +39,7 @@ function ScheduleList() {
             <th>DateTime</th>
             <th>Movie</th>
             <th>Room</th>
+            <th>Theater</th>
             <th>Seat List</th>
             <th>Action</th>
           </tr>
@@ -48,6 +53,7 @@ function ScheduleList() {
                   <td>{t.datetime}</td>
                   <td>{t.movie.name}</td>
                   <td>{t.room.name}</td>
+                  <td>{t.theater.name}</td>
                   <td>
                     <Link to={`/admin/schedule/${t.id}/seats`}>Xem</Link>
                   </td>

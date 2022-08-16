@@ -1,25 +1,26 @@
 import "./Seat.css";
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import SeatDataService from "../../../services/SeatDataService";
-import { useNavigate, useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 const price = 45000;
 
 function Seat() {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [schedule, setSchedule] = useState({});
+  let {id} = useParams();
   const navigate = useNavigate();
   // console.log(schedule)
   const toCheckout = () => {
     navigate("/checkout", {
-      state: { seats: selectedSeats, schedule: schedule },
+      state: {seats: selectedSeats, schedule: schedule},
     });
   };
 
   useEffect(() => {
-    return getSchedualeById(1);
-  }, []);
+    getSchedualeById(id);
+  }, [id]);
   const getSchedualeById = (id) => {
     SeatDataService.getScheduleById(id).then((res) => {
       setSchedule(res.data);
@@ -84,9 +85,9 @@ function ShowCase() {
   );
 }
 
-function Cinema({ selectedSeats, onSelectedSeatsChange }) {
+function Cinema({selectedSeats, onSelectedSeatsChange}) {
   const [seat1, setSeat1] = useState([]);
-  const { id } = useParams();
+  const {id} = useParams();
   useEffect(() => {
     getSeatByScheduleId(id);
   }, [id]);
