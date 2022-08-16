@@ -16,7 +16,7 @@
     color: #283e59;
     background-color: #f6c343;
     border-color: #f6c343;
-    width: 74%;
+    /* width: 74%; */
     padding: 10px;
     margin-top: 5px;
     border-radius: 5px;
@@ -44,3 +44,4 @@
 	font-weight:normal;
     font-size: 15px;
 }
+/* --- */

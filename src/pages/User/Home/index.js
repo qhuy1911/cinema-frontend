@@ -14,8 +14,8 @@ function Home() {
   let navigate = useNavigate();
 
   const [dates, setDates] = useState([]);
-  const [theaterId,setTheaterId] = useState(1);
-  console.log(theaterId)
+  const [theaterId, setTheaterId] = useState();
+  console.log("id:", theaterId);
 
   useEffect(() => {
     const currentUser = AuthService.getCurrentUser();
@@ -51,29 +51,53 @@ function Home() {
   };
   return (
     <div>
-      <form>
-        <div className="flex flex-col gap-5">
-          <SelectTheater  setTheaterId={setTheaterId}></SelectTheater>
-        </div>
-      </form>
-      <ScheduleHome id={theaterId} onScheduleSelect={onScheduleSelect} />
-      <div className="home-container">
-        <div className="description">
-          <FontAwesomeIcon icon={faCircleInfo} className="home-info-icon" />
-          Nhấn vào suất chiếu để tiến hành mua vé
+      <br></br>
+      <div className="container mt-4">
+        <h2 class="text-center">Mua vé theo rạp</h2>
+        <br></br>
+        <div className="row">
+          <SelectTheater setTheaterId={setTheaterId}></SelectTheater>
+          <div class="col-md-9">
+            <div id="showtimes">
+              {theaterId === undefined && (
+                <div class="alert alert-light">Bạn chưa chọn rạp.</div>
+              )}
+            </div>
+            {theaterId !== undefined && (
+              <div>
+              <ScheduleHome
+                id={theaterId}
+                onScheduleSelect={onScheduleSelect}
+              />
+              <div className="home-container">
+                <div className="description">
+                  <FontAwesomeIcon
+                    icon={faCircleInfo}
+                    className="home-info-icon"
+                  />
+                  Nhấn vào suất chiếu để tiến hành mua vé
+                </div>
+              </div>
+              {movies ? (
+                <div className="movie-list">
+                  {movies.map((movieNow, index) => {
+                    return (
+                      <MovieCard
+                        key={index}
+                        data={movieNow}
+                        dataSchedule={dates}
+                      />
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className="home-container">Không có lịch chiếu</div>
+              )}
+              </div>
+              )}
+          </div>
         </div>
       </div>
-      {movies ? (
-        <div className="movie-list">
-          {movies.map((movieNow, index) => {
-            return (
-              <MovieCard key={index} data={movieNow} dataSchedule={dates} />
-            );
-          })}
-        </div>
-      ) : (
-        <div className="home-container">Không có lịch chiếu</div>
-      )}
     </div>
   );
 }
