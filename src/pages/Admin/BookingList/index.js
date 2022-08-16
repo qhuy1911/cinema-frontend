@@ -30,6 +30,7 @@ function BookingList() {
     });
   }, []);
   let counts = 0;
+
   return (
     <div className="booking-list-wrapper">
       <h2>BookingList</h2>

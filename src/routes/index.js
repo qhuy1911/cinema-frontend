@@ -19,6 +19,8 @@ import EditRoom from "../pages/Admin/RoomList/EditRoom";
 import AdminMoviesList from "../components/AdminMoviesList";
 import TheaterList from "../pages/Admin/TheaterList";
 import AddTheater from "../pages/Admin/TheaterList/AddTheater";
+import Dashboard from "../pages/Admin/Dashboard";
+import Tickets from "../pages/Admin/Dashboard/Tickets";
 
 const publicRoutes = [
   //User
@@ -35,8 +37,10 @@ const publicRoutes = [
 ];
 
 const privateRoutes = [
+  {path: "/admin", component: Dashboard, layout: AdminLayout},
+  {path: "/admin/recent", component: Tickets, layout: AdminLayout},
   {path: "/admin/movies", component: MoviesList, layout: AdminLayout},
-  {path: "/admin/movies/post", component: AdminMoviesList},
+  {path: "/admin/movies/post", component: AdminMoviesList, layout: AdminLayout},
   {path: "/admin/schedule", component: ScheduleList, layout: AdminLayout},
   {path: "/admin/rooms", component: RoomList, layout: AdminLayout},
   {path: "/admin/schedule/:id/seats", component: SeatList, layout: AdminLayout},
