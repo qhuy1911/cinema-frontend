@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useRef, useEffect } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -116,6 +116,7 @@ function Login() {
             )}
             <CheckButton style={{ display: "none" }} ref={checkBtn} />
           </Form>
+          <p>You don't have account? <Link to={'/register'}>Register</Link></p>
         </div>
       </div>
       <div className="col-md-4"></div>

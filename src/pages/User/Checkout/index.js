@@ -82,7 +82,7 @@ function Checkout(props) {
               {/* Welcome */}
               <div className="checkout-welcome">
                 <span>
-                  Xin chào <b>qhuy1911</b>.
+                  Xin chào <b>{user.fullName}</b>.
                 </span>
               </div>
               {/* Order */}
