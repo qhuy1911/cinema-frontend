@@ -34,8 +34,8 @@ const publicRoutes = [
   {path: "/schedules/:id/seats", component: Seat},
 
   // auth
-  {path: "/login", component: Login, layout: null},
-  {path: "/register", component: Register, layout: null},
+  {path: "/login", component: Login},
+  {path: "/register", component: Register},
 ];
 
 const privateRoutes = [

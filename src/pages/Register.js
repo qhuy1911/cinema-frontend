@@ -5,7 +5,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../services/AuthService";
 import { isEmail } from "validator";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const required = (value) => {
   if (!value) {
@@ -220,6 +220,7 @@ function Register() {
             )}
             <CheckButton style={{ display: "none" }} ref={checkBtn} />
           </Form>
+          <p>You have an account! <Link to={'/login'}>Login</Link></p>
         </div>
       </div>
       <div className="col-md-4"></div>

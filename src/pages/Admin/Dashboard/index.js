@@ -74,7 +74,7 @@ function Dashboard() {
       });
       results.push({...theater, total: sum});
     });
-    // console.log(results);
+    console.log("Result",results);
     return results;
   };
 
